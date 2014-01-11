@@ -1,0 +1,7 @@
+{
+    "vrapp-util-transhortcuts": {
+        "requires": [
+            "yui-base"
+        ]
+    }
+}

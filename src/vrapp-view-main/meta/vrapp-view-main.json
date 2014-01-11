@@ -1,0 +1,8 @@
+{
+    "vrapp-view-main": {
+        "requires": [
+            "widget","transition"
+        ],
+        "skinnable": true
+    }
+}

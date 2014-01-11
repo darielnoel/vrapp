@@ -1,0 +1,11 @@
+{
+    "name"       : "vrapp-view-view",
+    "displayName": "Gallery: vrapp-view-view",
+    "description": "*Summary Goes Here*",
+    "author"     : [ "" ],
+    "use"        : [ "vrapp-view-view" ],
+
+    "tags": [ "gallery" ],
+
+    "examples": []
+}

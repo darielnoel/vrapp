@@ -1,0 +1,11 @@
+{
+    "name"       : "vrapp-util-transhortcuts",
+    "displayName": "Gallery: vrapp-util-transhortcuts",
+    "description": "*Summary Goes Here*",
+    "author"     : [ "" ],
+    "use"        : [ "vrapp-util-transhortcuts" ],
+
+    "tags": [ "gallery" ],
+
+    "examples": []
+}

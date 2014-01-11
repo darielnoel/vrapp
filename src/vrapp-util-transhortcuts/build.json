@@ -1,0 +1,10 @@
+{
+    "name": "vrapp-util-transhortcuts",
+    "builds": {
+        "vrapp-util-transhortcuts": {
+            "jsfiles": [
+                "js/vrapp-util-transhortcuts.js"
+            ]
+        }
+    }
+}

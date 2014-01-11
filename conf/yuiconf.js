@@ -21,3 +21,4 @@ YUI_config = {
     },
     lang: 'es-VE',
 };
+

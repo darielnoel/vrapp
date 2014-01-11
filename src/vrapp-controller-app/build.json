@@ -1,0 +1,10 @@
+{
+    "name": "vrapp-controller-app",
+    "builds": {
+        "vrapp-controller-app": {
+            "jsfiles": [
+                "js/vrapp-controller-app.js"
+            ]
+        }
+    }
+}

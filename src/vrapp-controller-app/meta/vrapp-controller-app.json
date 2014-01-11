@@ -1,0 +1,7 @@
+{
+    "vrapp-controller-app": {
+        "requires": [
+            "yui-base"
+        ]
+    }
+}

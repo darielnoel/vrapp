@@ -5,6 +5,11 @@
   padding: 9px 15px 9px 15px;
 }
 
+.header{
+	color:#999999;
+	font-size: 100%;
+}
+
 .btn {
   border-radius: 0px;
 }
@@ -79,6 +84,44 @@ img.singers{
   border-color: #C0392B;  
 }
 
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+	background-color: #C0392B;
+	border-color: #C0392B;
+}
+
+.btn-primary:focus{
+	outline: 5px auto #C0392B;
+	outline-offset: -2px;
+}
+
 .center-align{
 	margin: 0px auto;
+}
+
+.view{
+	position: relative;
+	display: block;
+}
+
+/*.yui3-vrapp-view-landing{
+	position: relative;
+	display: block;
+	left:0%;
+}*/
+
+.view-active{
+	position: relative;
+	display: block;
+	left:0%;
+}
+
+.view-hidden {
+	display:none;
+	position: relative;
+	left:100%;
+}
+
+.view-container{
+	position: relative;
+	overflow: hidden;
 }
