@@ -37,13 +37,13 @@ function(Y){
 	 * @return 
 	 */
 	App.initializeViews = function(){
-		App.View.LandingView = new Y.VrApp.LandingView({
-			srcNode:'#landing-view'
-		}).render();
+		// App.View.LandingView = new Y.VrApp.LandingView({
+		// 	srcNode:'#landing-view'
+		// }).render();
 
-		App.View.MainView = new Y.VrApp.MainView({
-			srcNode:'#main-view'
-		}).render();
+		// App.View.MainView = new Y.VrApp.MainView({
+		// 	srcNode:'#main-view'
+		// }).render();
 
 		//Agregando las vistas que se van creando
 		controllerView.addView(App.View.LandingView);

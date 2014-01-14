@@ -125,3 +125,55 @@ img.singers{
 	position: relative;
 	overflow: hidden;
 }
+
+/*Vista principal*/
+.separator-content-space-small{
+	margin-top: 40px;
+}
+
+.separator-content-space-large{
+	margin-top: 80px;
+}
+
+.frequency-level{
+	height: 250px;
+	background-color: #edeff1;
+}
+
+.frequency-level-hotzone{
+	position: relative;
+	background-color: #3498db;
+	top: 100px;
+	height: 50px;
+}
+
+.frequency-level-indicator{
+	position: absolute;
+	top:214px;
+}
+
+.center-level-indicator{
+	margin:0 auto;
+	width: 36px;
+}
+
+.center-michrophone{
+	margin:0 auto;
+	width: 36px;
+}
+
+.center-piano{
+	top: 40px;
+	margin:0 auto;
+	width: 58px;
+/*	margin-bottom: 135px;*/
+}
+
+.piano-controls{
+	margin-bottom: 102px;
+}
+
+.controles{
+	color:#555555;
+	font-size: 110%;
+}
