@@ -150,6 +150,7 @@ img.singers{
 .frequency-level-indicator{
 	position: absolute;
 	top:214px;
+	background-color: transparent;
 }
 
 .center-level-indicator{

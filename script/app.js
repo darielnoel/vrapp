@@ -6,6 +6,7 @@ YUI().use(
 	'vrapp-view-landing',
 	'vrapp-view-main',
 	'vrapp-controller-view',
+	'vrapp-view-level',
 function(Y){
 	//http://tympanus.net/Blueprints/SlidePushMenus/
 	console.log('Hello world');
@@ -51,10 +52,34 @@ function(Y){
 
 		//Estableciendo como activa la vista App.View.LandingView
 		controllerView.setActiveView(0);
+
+
+		App.View.LevelView = new Y.VrApp.LevelView({
+			srcNode:'.frequency-level'
+		}).render();
 	},
 
 	App.initializeControllers();
 	App.initializeViews();
+
+
+	//Pruebas
+	Y.one('#testInputButton').on('click',function(e){
+		var value = parseInt(Y.one('#testInput').get('value'));
+		Y.log(value);
+		App.View.LevelView.set('umbral',440);
+
+		var random = 2;
+
+		Y.later(1000,this,function () {
+			random = randomFromInterval(0,1000);
+			App.View.LevelView.syncData(random);	
+		}, {}, 1);
+
+
+
+
+	});
 
 
 	//Se escucha el evento de proxima vista de la landing page
@@ -66,5 +91,10 @@ function(Y){
 	Y.one('.header').on('click', function(e){
 		controllerView.changeToPreviousView();
 	});	
+
+	function randomFromInterval(from,to)
+	{
+    return Math.floor(Math.random()*(to-from+1)+from);
+	}
 
 });

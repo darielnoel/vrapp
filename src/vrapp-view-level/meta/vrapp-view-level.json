@@ -1,0 +1,8 @@
+{
+    "vrapp-view-level": {
+        "requires": [
+            "widget"
+        ],
+        "skinnable": true
+    }
+}
