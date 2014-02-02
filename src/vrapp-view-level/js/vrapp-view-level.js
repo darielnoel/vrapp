@@ -168,7 +168,7 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 				value: 250
 			},
 			maxValue: {
-				value: 1000
+				value: 540
 			},
 			minValue: {
 				value: 0
