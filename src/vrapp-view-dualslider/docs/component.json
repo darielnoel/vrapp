@@ -1,0 +1,11 @@
+{
+    "name"       : "vrapp-view-dualslider",
+    "displayName": "Gallery: vrapp-view-dualslider",
+    "description": "*Summary Goes Here*",
+    "author"     : [ "" ],
+    "use"        : [ "vrapp-view-dualslider" ],
+
+    "tags": [ "gallery" ],
+
+    "examples": []
+}

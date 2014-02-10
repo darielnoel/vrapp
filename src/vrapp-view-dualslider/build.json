@@ -1,0 +1,10 @@
+{
+    "name": "vrapp-view-dualslider",
+    "builds": {
+        "vrapp-view-dualslider": {
+            "jsfiles": [
+                "js/vrapp-view-dualslider.js"
+            ]
+        }
+    }
+}

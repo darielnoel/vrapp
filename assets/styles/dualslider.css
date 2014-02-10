@@ -1,0 +1,55 @@
+.selector-content{
+/*	width: 7.142857142857143%;*/
+	width: 8.5236%;
+	position: relative;
+	left: 6.3%;
+	display: inline-block;
+}
+
+.selector-content-min{
+	left: 39.4%;
+}
+
+.selector-content-max{
+	left: 57.4%;
+}
+
+.selector-arm {
+	width: 25%;
+ 	background-color: #edeff1;
+  	margin: 0 auto;
+/*  	border-right: 1px solid #000;
+	border-top: solid 1px black;
+	border-bottom: solid 1px black;*/
+}
+
+.selector-arm-min{
+	height: 59px;
+}
+
+.selector-arm-max{
+	height: 40px;
+}
+
+.selector-handle {
+	cursor: pointer;
+/*	height: 28px;*/
+	border-radius: 20px;
+	width: 100%;
+	background-color: #e74c3c;
+	text-align: center;
+	color: #FFF;
+	font-size: bold;
+}
+
+/*Texto del Selector*/
+.selector-handle div{
+	padding-top: 15%;
+	padding-bottom: 18%;
+}
+
+.selector-handle-spacer{
+	height: 1em;
+}
+
+

@@ -1,59 +1,23 @@
-.pianoBody{
-	width: 100%;
-	position: relative;
-}
-/*
-	Representa una octava completa
-	Cada octava representa un porciento determinado del piano body 100%
-	Para representar n octavas seria dividir 100/n
-*/
-.octave {
-	position: relative;
+/*cada tecla*/
+.key {
 	float: left;
-	width: 25%;
-	border-top: solid 1px;
-	height: 40.0px;
-	border-left: 1px solid;
-}
-
-/*mascara para poder pocisionar los sostenidos encima de los normales*/
-.absolute-mask{
-	position: absolute;
-	width: 100%;
-}
-
-.inside-absolute-mask{
-	position: relative;
-}
-
-/*Las teclas correspondientes a las notas normales*/
-.white {
-	float: left;
-	width: 14.285%;
-	height: 40.0px;
+	width: 2.3809%;
+	height: 29px;
   	background-color: #FFF;
-  	border-right: 1px solid #626262;
-  	border-bottom: 1px solid #626262;
-  	position: relative;
+  	border-right: 1px solid #000;
+	border-top: solid 1px black;
+	border-bottom: solid 1px black;
 }
 
 /*Las teclas correspondientes a las notas sostenidas*/
 .black {
-	float: left;
-	width: 7.75%;
-	height: 20.0px;
+	width: 40%;
+	width: 1px;
+	height: 15px;
 	background-color: #000;
-	border: 1px solid #626262;
-	position: relative;
-	margin-right: 6.5%;
+	border: 1px solid #000;
 }
 
-/*El Cs sostenido hay que correrlo*/
-.octave .Cs{
-	margin-left: 12%;
-}
-
-/*Lo mismo Fs sostenido hay que correrlo*/
-.octave .Fs{
-	margin-left: 14%;
+.first-key{
+	border-left: solid 1px black;
 }
