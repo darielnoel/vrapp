@@ -1,13 +1,19 @@
+.track{
+	position: relative;
+	overflow: hidden;
+}
+
 .selector-content{
 /*	width: 7.142857142857143%;*/
 	width: 8.5236%;
 	position: relative;
 	left: 6.3%;
 	display: inline-block;
+/*	background-color: red;*/
 }
 
 .selector-content-min{
-	left: 39.4%;
+	left: 0%;
 }
 
 .selector-content-max{

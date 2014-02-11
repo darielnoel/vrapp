@@ -3,7 +3,7 @@ Y.namespace('VrApp');
 var ATTR_BOUNDINGBOX = 'boundingBox',
 	ATTR_CONTENTBOX = 'contentBox',
 
-	MyDualSlider = Y.Base.create('vrapp-view-dualslider', Y.Widget, [], {
+	MyDualSlider = Y.Base.create('vrapp-view-dualslider', Y.Base, [], {
 
 		/**
 		 * Description
@@ -30,6 +30,13 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 			});
 		},
 
+		render: function(){
+			var instance = this;
+			instance.renderUI();
+			instance.bindUI();
+			instance.syncUI();
+		},
+
 		/**
 		 * Description
 		 * @method renderUI
@@ -37,23 +44,63 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 		 */
 		renderUI: function () {
 			var instance = this,
-				contentBox = instance.get(ATTR_CONTENTBOX),
-				boundingBox = instance.get(ATTR_BOUNDINGBOX),
-				minThumbNode = contentBox.one('.minThumb'),
-				maxThumbNode = contentBox.one('.maxThumb'),
+				trackNode = instance.get('track').node,
+				minThumbNode = instance.get('minThumb').node,
+				maxThumbNode = instance.get('maxThumb').node,
+				thumbTrackNode = instance.get('thumbTrack').node,
+				thumbTrackDelay,
 				nodeLength;
 
 			//Inicializando el tamanno en pixeles del node traking
-			nodeLength = boundingBox.one('.track').get('offsetWidth');
+			nodeLength = instance.get('track').node.get('offsetWidth');
+
+			console.log('renderUI.nodeLength');
 			console.log(nodeLength);
 
-			//Nodos correspondientes
-			instance.get('minThumb').node = minThumbNode;
-			instance.get('maxThumb').node = maxThumbNode;
+
+			// //Pivote central de los thumbs
+			// var minSelectorArm = minThumbNode.one('.selector-arm').get('offsetWidth')/2,
+			// 	maxSelectorArm = maxThumbNode.one('.selector-arm').get('offsetWidth')/2;
+
+			// instance.get('minThumb').middlePivot = minThumbNode.get('offsetWidth')/2 + minSelectorArm;
+			// instance.get('maxThumb').middlePivot = maxThumbNode.get('offsetWidth')/2 + maxSelectorArm;
 
 			//Pivote central de los thumbs
-			instance.get('minThumb').middlePivot = minThumbNode.get('offsetWidth')/2;
-			instance.get('maxThumb').middlePivot = maxThumbNode.get('offsetWidth')/2;
+			var minSelectorArm = minThumbNode.one('.selector-arm').getX(),
+				maxSelectorArm = maxThumbNode.one('.selector-arm').getX();
+
+
+
+			instance.get('minThumb').middlePivot = minSelectorArm - minThumbNode.getX();
+			instance.get('maxThumb').middlePivot = maxSelectorArm - maxThumbNode.getX();
+
+			console.log('minThumb.middlePivot');
+			console.log(instance.get('minThumb').middlePivot);
+
+			console.log('maxThumb.middlePivot');
+			console.log(instance.get('maxThumb').middlePivot);
+
+
+
+
+
+
+
+			//Delay entre el track general y el track de los thumbs
+			thumbTrackDelay = trackNode.getX() - thumbTrackNode.getX();
+			instance.get('thumbTrack').delay = thumbTrackDelay;
+
+			console.log('YUI3.trackNode Position');
+			console.log(trackNode.getX());
+
+			console.log('YUI3.thumbTrackNode Position');
+			console.log(thumbTrackNode.getX());
+
+
+			console.log('renderUI.thumbTrackDelay.YUI');
+			console.log(thumbTrackDelay);
+
+			
 
 
 
@@ -67,29 +114,29 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 		 * @return 
 		 */
 		bindUI: function () {
-			var instance = this,
-				contentBox = instance.get(ATTR_CONTENTBOX),
-				minThumbDOMNode = instance.get('minThumb').node.getDOMNode(),
-				maxThumbDOMNode = instance.get('maxThumb').node.getDOMNode();
+			// var instance = this,
+			// 	contentBox = instance.get(ATTR_CONTENTBOX),
+			// 	minThumbDOMNode = instance.get('minThumb').node.getDOMNode(),
+			// 	maxThumbDOMNode = instance.get('maxThumb').node.getDOMNode();
 
 			
 
-			//TODO: touchstart Event
-			minThumbDOMNode.addEventListener('touchstart', function(e){
-				instance.syncThumbOnStart(e, instance.get('minThumb'));
-				e.preventDefault(); // prevent default click behavior
-			});
+			// //TODO: touchstart Event
+			// minThumbDOMNode.addEventListener('touchstart', function(e){
+			// 	instance.syncThumbOnStart(e, instance.get('minThumb'));
+			// 	e.preventDefault(); // prevent default click behavior
+			// });
 
-			maxThumbDOMNode.addEventListener('touchstart', function(e){
+			// maxThumbDOMNode.addEventListener('touchstart', function(e){
 
-			});
+			// });
 
-			//TODO: touchmove Event
-			minThumbDOMNode.addEventListener('touchmove', function(e){
-				instance.syncThumbOnMove(e, instance.get('minThumb'));
-				e.preventDefault();				
-			});
-			maxThumbDOMNode.addEventListener('touchmove', instance.maxThumbNodeMoveHandle);
+			// //TODO: touchmove Event
+			// minThumbDOMNode.addEventListener('touchmove', function(e){
+			// 	instance.syncThumbOnMove(e, instance.get('minThumb'));
+			// 	e.preventDefault();				
+			// });
+			// maxThumbDOMNode.addEventListener('touchmove', instance.maxThumbNodeMoveHandle);
 
 		},
 
@@ -140,6 +187,7 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 			conversionRatio = instance.get('nodeLength') / range;
 			instance.set('conversionRatio', conversionRatio);
 
+			console.log('syncUI.conversionRatio');
 			console.log(conversionRatio);
 
 			instance.syncThumbByValue(minThumb, minThumb.value);
@@ -182,8 +230,21 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 			valuePixel = value * conversionRatio;
 
 			//Pivote central
-			valuePixel = valuePixel - middlePivot;
+			valuePixel = valuePixel - middlePivot; //instance.get('thumbTrack').delay;
+
+			console.log('middlePivot');
+			console.log(middlePivot);
+
+
+			//TODO: Ver prk pasa esto?
+			if(thumb.type === 'minThumb'){
+				valuePixel = valuePixel + instance.get('thumbTrack').delay;
+			} else {
+				// valuePixel = (value+1) * conversionRatio;
+				// valuePixel = valuePixel - middlePivot;
+			}
 			
+			console.log('syncThumbByValue.valuePixel del pivote central');
 			console.log(valuePixel);
 			thumb.node.setStyle('left',valuePixel +'px');
 
@@ -205,6 +266,17 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 
 	}, {
 		ATTRS: {
+			track: {
+				value: {
+					node: {}
+				}
+			},
+			thumbTrack:{
+				value: {
+					node: {},
+					delay: 0
+				}
+			},
 			minThumb: {
 				value: {
 					value:30,

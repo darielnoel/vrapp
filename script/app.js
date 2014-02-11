@@ -9,7 +9,7 @@ YUI().use(
 	'vrapp-view-main',
 	'vrapp-controller-view',
 	// 'vrapp-view-level',
-	// 'vrapp-view-dualslider',
+	'vrapp-view-dualslider',
 	'event-touch',
 function(Y){
 	console.log('Hello world');
@@ -106,9 +106,27 @@ function(Y){
 
 
 
+//---Dual slider 1----------------------------------------------------------------------
 
-
-
+	var dualSlider = new Y.VrApp.DualSlider({
+		track: {
+			node: Y.one('.track')
+		},
+		thumbTrack:{
+			node: Y.one('.thumbTrack'),
+			delay: 0
+		},
+		minThumb:{
+			value:3,
+			node: Y.one('.minThumb'),
+			type:'minThumb',
+		},
+		maxThumb:{
+			value:41,
+			node: Y.one('.maxThumb')
+		},
+		range:42,
+	}).render();
 
 
 
@@ -135,7 +153,6 @@ function(Y){
 	// maxThumb = dualSlider.get('maxThumb');
 
 	// dualSlider.syncThumbByValue(minThumb, 20);
-
 
 
 
