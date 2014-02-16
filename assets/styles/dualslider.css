@@ -1,61 +1,68 @@
-.track{
+.key-selector{
+	background-color: #edeff1;
+	width: 100%;
 	position: relative;
-	overflow: hidden;
+	z-index: 400;
 }
 
-.selector-content{
-/*	width: 7.142857142857143%;*/
-	width: 8.5236%;
+.key-selector-min{
+	height: 80px;
+}
+
+.key-selector-max{
+	height: 55px;
+}
+
+.key-selector-min .selector-handle{
+	margin-top: 49px;
+}
+
+.key-selector-max .selector-handle{
+	margin-top: 24px;
+}
+
+/*Cubierta de la tecla seleccionada para poder pintar el borde*/
+.key-selector-keycover{
+	background-color: #edeff1;
+	width: 100%;
+	height: 28.5px;
 	position: relative;
-	left: 6.3%;
-	display: inline-block;
-/*	background-color: red;*/
+	border-bottom: 1px solid black;
 }
 
-.selector-content-min{
-	left: 0%;
+.key-selector-arm{
+	position: absolute;
+	margin-left: -290%;
 }
 
-.selector-content-max{
-	left: 57.4%;
+/*Texto del Selector*/
+.selector-handle-caption{
+	padding-top: 15%;
+	padding-bottom: 18%;	
 }
 
-.selector-arm {
-	width: 25%;
- 	background-color: #edeff1;
-  	margin: 0 auto;
-/*  	border-right: 1px solid #000;
-	border-top: solid 1px black;
-	border-bottom: solid 1px black;*/
-}
-
-.selector-arm-min{
-	height: 59px;
-}
-
-.selector-arm-max{
-	height: 40px;
+.selector-handle-tittle{
+	text-align: center;
 }
 
 .selector-handle {
 	cursor: pointer;
-/*	height: 28px;*/
 	border-radius: 20px;
-	width: 100%;
+	width: 70%;
 	background-color: #e74c3c;
 	text-align: center;
 	color: #FFF;
 	font-size: bold;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 }
 
-/*Texto del Selector*/
-.selector-handle div{
-	padding-top: 15%;
-	padding-bottom: 18%;
+/*Si no se le pone un espacio debajo a los selectores no se ven*/
+.thumbTrack{
+	height: 100px;
 }
 
-.selector-handle-spacer{
-	height: 1em;
+.selected-key{
+	background-color: #edeff1;
 }
-
-

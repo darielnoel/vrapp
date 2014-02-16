@@ -1,0 +1,10 @@
+{
+    "name": "vrapp-view-item",
+    "builds": {
+        "vrapp-view-item": {
+            "jsfiles": [
+                "js/vrapp-view-item.js"
+            ]
+        }
+    }
+}

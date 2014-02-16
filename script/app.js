@@ -2,7 +2,9 @@ YUI().use(
 	'base',
 	'node',
 	'transition',
+	'event',
 	'event-move',
+	'scrollview',
 	'dd-constrain',
 	'vrapp-view-view',
 	'vrapp-view-landing',
@@ -10,6 +12,8 @@ YUI().use(
 	'vrapp-controller-view',
 	// 'vrapp-view-level',
 	'vrapp-view-dualslider',
+	'vrapp-view-container',
+	'async-queue',
 	'event-touch',
 function(Y){
 	console.log('Hello world');
@@ -96,66 +100,194 @@ function(Y){
 		controllerView.changeToPreviousView();
 	});
 
-
-	document.getElementById();
-	console.log(Y.one('#path3566-1-7-26-7-0-3'));
-
-	// Y.one('#path3566-1-7-26-7-0-3').setStyle('fill','#3498db');
-	
-
-
-
-
 //---Dual slider 1----------------------------------------------------------------------
+	Y.on('vrapp-view-dualslider:selectHandle',function(e){
+		console.log('Se escucha el evento en el main');
+		console.log(e.data);
+	});
 
 	var dualSlider = new Y.VrApp.DualSlider({
 		track: {
 			node: Y.one('.track')
 		},
-		thumbTrack:{
-			node: Y.one('.thumbTrack'),
-			delay: 0
-		},
 		minThumb:{
-			value:3,
-			node: Y.one('.minThumb'),
+			value:10,
+			node: Y.one('.track .key-selector-min'),
 			type:'minThumb',
 		},
 		maxThumb:{
-			value:41,
-			node: Y.one('.maxThumb')
+			value:21,
+			node: Y.one('.track .key-selector-max'),
+			type:'maxThumb',
 		},
-		range:42,
-	}).render();
+		keyCollection: APP_CONFIG.keyCollection,
+		blackBehaviorRenderCollection: APP_CONFIG.blackBehaviorRenderCollection
+	});
+
+	dualSlider.render();
+
+	dualSlider.syncThumbByValue('minThumb',10);
+	dualSlider.syncThumbByValue('maxThumb',21);
+
+//--------------------------------------------------------------
+var artist = {
+	id: 20,
+	vocalRange:{
+		min: 20,//de 0 a 41
+		max: 26
+	},
+	name:"Adelle",
+	score: 3,//De 0 a 10 indica relevancia
+	picture: 'adelle.jpg',//"Path de la imagen asociada"
+	twitter: '@adelle'
+};
+
+var artistModelCollection = [
+	{
+		vocalRange:{
+			min: 20,//de 0 a 41
+			max: 26
+		},
+		name:"Bruno Mars",
+		score: 3,//De 0 a 10 indica relevancia
+		picture: 'bruno.png',//"Path de la imagen asociada"
+		twitter: '@bruno',
+		behavior:'blocked4'
+	},
+	{
+		vocalRange:{
+			min: 20,//de 0 a 41
+			max: 26
+		},
+		name:"Adelle",
+		score: 3,//De 0 a 10 indica relevancia
+		picture: 'adele.png',//"Path de la imagen asociada"
+		twitter: '@adelle',
+		behavior:'blocked'
+	},
+	{
+		vocalRange:{
+			min: 20,//de 0 a 41
+			max: 26
+		},
+		name:"Luciano Pavarotti",
+		score: 3,//De 0 a 10 indica relevancia
+		picture: 'luciano.png',//"Path de la imagen asociada"
+		twitter: '@pavarotti',
+		behavior:'blocked'
+	},
+	{
+		vocalRange:{
+			min: 20,//de 0 a 41
+			max: 26
+		},
+		name:"Bruno Mars",
+		score: 3,//De 0 a 10 indica relevancia
+		picture: 'bruno.png',//"Path de la imagen asociada"
+		twitter: '@bruno',
+		behavior:'blocked4'
+	},
+	{
+		vocalRange:{
+			min: 20,//de 0 a 41
+			max: 26
+		},
+		name:"Adelle",
+		score: 3,//De 0 a 10 indica relevancia
+		picture: 'adele.png',//"Path de la imagen asociada"
+		twitter: '@adelle',
+		behavior:'blocked'
+	},
+	{
+		vocalRange:{
+			min: 20,//de 0 a 41
+			max: 26
+		},
+		name:"Luciano Pavarotti",
+		score: 3,//De 0 a 10 indica relevancia
+		picture: 'luciano.png',//"Path de la imagen asociada"
+		twitter: '@pavarotti',
+		behavior:'blocked'
+	},
+	{
+		vocalRange:{
+			min: 20,//de 0 a 41
+			max: 26
+		},
+		name:"Bruno Mars",
+		score: 3,//De 0 a 10 indica relevancia
+		picture: 'bruno.png',//"Path de la imagen asociada"
+		twitter: '@bruno',
+		behavior:'blocked4'
+	},
+	{
+		vocalRange:{
+			min: 20,//de 0 a 41
+			max: 26
+		},
+		name:"Adelle",
+		score: 3,//De 0 a 10 indica relevancia
+		picture: 'adele.png',//"Path de la imagen asociada"
+		twitter: '@adelle',
+		behavior:'blocked'
+	},
+	{   
+		minVR: 20,
+		maxVR: 26,
+		name:"Luciano Pavarotti",
+		score: 3,//De 0 a 10 indica relevancia
+		picture: 'luciano.png',//"Path de la imagen asociada"
+		twitter: '@pavarotti',
+		behavior:'blocked'
+	}
+];
 
 
 
-//---Dual slider----------------------------------------------------------------------
+// var artistModelCollection = new Y.VrApp.Container({
+// 	childModelCollection: artistModelCollection
+// }).render('.artist-container');
 
-	// var dualSlider = new Y.VrApp.DualSlider({
-	// 	minThumb:{
-	// 		value:0
-	// 	},
-	// 	maxThumb:{
-	// 		value:60
-	// 	},
-	// 	range:42,
-	// 	srcNode:Y.one('#track')
-	// }).render();
+var myScroll;
 
-	// Y.on('vrapp-view-dualslider:valueChange', function(e){
-	// 	console.log(e.data);
-	// 	Y.one('#testInput').set('value',e.data);
-	// });
+function loaded() {
+	myScroll = new iScroll('wrapper', {
+		snap: true,
+		momentum: false,
+		hScrollbar: false,
+		onScrollEnd: function () {
+			document.querySelector('#indicator > li.active').className = '';
+			document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+		}
+	 });
+}
 
-	// minThumb = dualSlider.get('minThumb');
-
-	// maxThumb = dualSlider.get('maxThumb');
-
-	// dualSlider.syncThumbByValue(minThumb, 20);
+loaded();
 
 
 
+
+
+
+//-----------------------------------------------------------------------------------------
+// Constraining the width, instead of the height for horizontal scrolling
+    // var scrollView = new Y.ScrollView({
+    //     id: 'scrollview',
+    //     srcNode: '#scrollview-content',
+    //     width: '100%',
+    //     flick: {
+    //         minDistance:10,
+    //         minVelocity:0.3,
+    //         axis: "x"
+    //     }
+    // });
+
+    // scrollView.render();
+
+    // // Prevent default image drag behavior
+    // scrollView.get("contentBox").delegate("mousedown", function(e) {
+    //     e.preventDefault();
+    // }, "img");
 
 
 

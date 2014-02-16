@@ -11,6 +11,7 @@
 		<link href="assets/styles/main.css" rel="stylesheet" type="text/css" />
 		<link href="assets/styles/piano.css" rel="stylesheet" type="text/css" />
 		<link href="assets/styles/dualslider.css" rel="stylesheet" type="text/css" />
+		<link href="assets/styles/scrollview.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		<div class="row topbar">
@@ -29,7 +30,6 @@
 			<div id="test-view" class="view">
 				<div class="container">
 					<div class="row separator-content-space-xs">
-<!-- 						<div class="col-xs-1 col-md-1 col-sm-1"></div> -->
 							<div class="col-xs-11 col-md-11 col-sm-11">
 								<ul class="la">
 								  <li class="normal-text">
@@ -50,142 +50,166 @@
 									<div class="black pull-left"></div>
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
+								<div class="key E2">
 									<div class="black pull-left"></div>
 								</div>
-								<div class="key">
+								<div class="key F2">
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
-									<div class="black pull-left"></div>
-									<div class="black pull-right"></div>
-								</div>
-								<div class="key">
+								<div class="key G2">
 									<div class="black pull-left"></div>
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
-									<div class="black pull-left"></div>
-								</div>
-
-								<div class="key">
-									<div class="black pull-right"></div>
-								</div>
-								<div class="key">
+								<div class="key A2" >
 									<div class="black pull-left"></div>
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
-									<div class="black pull-left"></div>
-								</div>
-								<div class="key">
-									<div class="black pull-right"></div>
-								</div>
-								<div class="key">
-									<div class="black pull-left"></div>
-									<div class="black pull-right"></div>
-								</div>
-								<div class="key">
-									<div class="black pull-left"></div>
-									<div class="black pull-right"></div>
-								</div>
-								<div class="key">
+								<div class="key B2">
 									<div class="black pull-left"></div>
 								</div>
 
-								<div class="key">
+								<div class="key C3">
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
+								<div class="key D3">
 									<div class="black pull-left"></div>
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
+								<div class="key E3">
 									<div class="black pull-left"></div>
 								</div>
-								<div class="key">
-									<div class="black pull-right"></div>
+								<div class="key F3">
+									<div class="key-selector key-selector-min">
+										<div class="key-selector-keycover">
+											<div class="black pull-right"></div>
+										</div>
+										<div class="key-selector-arm">
+											<div class="key-selector-handle-container">
+												<div class="selector-handle">
+													<div class="selector-handle-caption">F3</div>
+												</div>
+												<div class="selector-handle-tittle">Lower&nbsp;</div>
+											</div>
+										</div>
+									</div>
 								</div>
-								<div class="key">
-									<div class="black pull-left"></div>
-									<div class="black pull-right"></div>
-								</div>
-								<div class="key">
-									<div class="black pull-left"></div>
-									<div class="black pull-right"></div>
-								</div>
-								<div class="key">
-									<div class="black pull-left"></div>
-								</div>
-
-								<div class="key">
-									<div class="black pull-right"></div>
-								</div>
-								<div class="key">
+								<div class="key G3 selected-key">
 									<div class="black pull-left"></div>
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
-									<div class="black pull-left"></div>
-								</div>
-								<div class="key">
-									<div class="black pull-right"></div>
-								</div>
-								<div class="key">
+								<div class="key A3 selected-key">
 									<div class="black pull-left"></div>
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
-									<div class="black pull-left"></div>
-									<div class="black pull-right"></div>
-								</div>
-								<div class="key">
+								<div class="key B3 selected-key">
 									<div class="black pull-left"></div>
 								</div>
 
-								<div class="key">
+								<div class="key C4 selected-key">
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
+								<div class="key D4 selected-key">
 									<div class="black pull-left"></div>
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
+								<div class="key E4 selected-key">
 									<div class="black pull-left"></div>
 								</div>
-								<div class="key">
+								<div class="key F4 selected-key">
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
-									<div class="black pull-left"></div>
-									<div class="black pull-right"></div>
-								</div>
-								<div class="key">
+								<div class="key G4 selected-key">
 									<div class="black pull-left"></div>
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
+								<div class="key A4 selected-key">
+									<div class="black pull-left"></div>
+									<div class="black pull-right"></div>
+								</div>
+								<div class="key B4 selected-key">
 									<div class="black pull-left"></div>
 								</div>
 
-								<div class="key">
-									<div class="black pull-right"></div>
+								<div class="key C5">
+									<div class="key-selector key-selector-max">
+										<div class="key-selector-keycover">
+											<div class="black pull-right"></div>
+										</div>
+										<div class="key-selector-arm">
+											<div class="key-selector-handle-container">
+												<div class="selector-handle">
+													<div class="selector-handle-caption">C5</div>
+												</div>
+												<div class="selector-handle-tittle">Higher</div>
+											</div>
+										</div>
+									</div>
 								</div>
-								<div class="key">
+								<div class="key D5">
 									<div class="black pull-left"></div>
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
+								<div class="key E5">
 									<div class="black pull-left"></div>
 								</div>
-								<div class="key">
+								<div class="key F5">
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
+								<div class="key G5">
 									<div class="black pull-left"></div>
 									<div class="black pull-right"></div>
 								</div>
-								<div class="key">
+								<div class="key A5">
+									<div class="black pull-left"></div>
+									<div class="black pull-right"></div>
+								</div>
+								<div class="key B5">
+									<div class="black pull-left"></div>
+								</div>
+
+								<div class="key C6">
+									<div class="black pull-right"></div>
+								</div>
+								<div class="key D6">
+									<div class="black pull-left"></div>
+									<div class="black pull-right"></div>
+								</div>
+								<div class="key E6">
+									<div class="black pull-left"></div>
+								</div>
+								<div class="key F6">
+									<div class="black pull-right"></div>
+								</div>
+								<div class="key G6">
+									<div class="black pull-left"></div>
+									<div class="black pull-right"></div>
+								</div>
+								<div class="key A6">
+									<div class="black pull-left"></div>
+									<div class="black pull-right"></div>
+								</div>
+								<div class="key B6">
+									<div class="black pull-left"></div>
+								</div>
+
+								<div class="key C7">
+									<div class="black pull-right"></div>
+								</div>
+								<div class="key D7">
+									<div class="black pull-left"></div>
+									<div class="black pull-right"></div>
+								</div>
+								<div class="key E7">
+									<div class="black pull-left"></div>
+								</div>
+								<div class="key F7">
+									<div class="black pull-right"></div>
+								</div>
+								<div class="key G7">
+									<div class="black pull-left"></div>
+									<div class="black pull-right"></div>
+								</div>
+								<div class="key A7">
 									<div class="black pull-left"></div>
 									<div class="black pull-right"></div>
 								</div>
@@ -196,31 +220,53 @@
 							</div>							
 						</div>
 					</div>
-					<div class="row thumbTrack">
-<!-- 						<div class="col-xs-1 col-md-1 col-sm-1"></div> -->
-						<!-- <div class="col-xs-11 col-md-11 col-sm-11"> -->
-							<div class="selector-content selector-content-min minThumb">
-								<div class="selector-arm selector-arm-min">
+					<div class="row separator-content-space-xlarge">
+						<div class="col-xs-11 col-md-11 col-sm-11 ">
+							<p class="normal-text s-padding-left no-margin">Similar or lower <span class="market-secondary">vocal range</span><span class="hidden-small"> that me</span>:</p>
+						</div>
+						<div class="col-xs-1 col-md-1 col-sm-1"></div>
+					</div>
+							        
+					<div class="row separator-content-space-xsmall no-padding">
+						<div class="arrow-along"></div>
+					</div>
+					<div class="row no-padding">
+						<div class="col-xs-12 col-md-12 col-sm-12 artist-scrollview no-padding">
+								<div class="popover bottom artist-container">
+<!-- 									<div class="center-block loader" style="display: block;">
+							            <img src="assets/images/loader32.gif"><br>
+							            Loading
+							        </div> -->
+<div id="wrapper">
+	<div id="scroller">
+		<ul id="thelist">
+			<li><strong>1.</strong> <em>A robot may not injure a human being or, through inaction, allow a human being to come to harm.</em></li>
+			<li><strong>2.</strong> <em>A robot must obey any orders given to it by human beings, except where such orders would conflict with the First Law.</em></li>
+			<li><strong>3.</strong> <em>A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.</em></li>
+			<li><strong>Zeroth Law:</strong> <em>A robot may not harm humanity, or, by inaction, allow humanity to come to harm.</em></li>
+			<li><strong>Lyuben Dilov's Forth law:</strong> <em>A robot must establish its identity as a robot in all cases.</em></li>
+			<li><strong>Harry Harrison's Forth law:</strong> <em>A robot must reproduce. As long as such reproduction does not interfere with the First or Second or Third Law.</em></li>
+			<li><strong>Nikola Kesarovski's Fifth law:</strong> <em>A robot must know it is a robot.</em></li>
+		</ul>
+	</div>
+</div>
+<div id="nav">
+	<div id="prev" onclick="myScroll.scrollToPage('prev', 0);return false">&larr; prev</div>
+	<ul id="indicator">
+		<li class="active">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+	</ul>
+	<div id="next" onclick="myScroll.scrollToPage('next', 0);return false">next &rarr;</div>
+</div>
 								</div>
-								<div class="selector-handle">
-									<div>C3</div>
-								</div>
-								<span>Lower</span>
-								
-							</div>
-							<div class="selector-content selector-content-max maxThumb">
-								<div class="selector-arm selector-arm-max">
-								</div>
-								<div class="selector-handle">
-									<div>C3</div>
-								</div>
-								<span>Highter</span>
-								<div class="selector-handle-spacer">&nbsp;</div>
-							</div>
-
-						<!-- </div> -->
-<!-- 						<div class="col-xs-1 col-md-1 col-sm-1"></div> -->
-					</div>					
+						</div>
+						<div class="col-xs-1 col-md-1 col-sm-1"></div>
+					</div>						
 
 					
 			</div>
@@ -313,26 +359,12 @@
 				</div>
 			</div> -->
 		</div>
-<!-- 		<div id="dd-demo-canvas1">
-		    <div id="dd-demo-canvas2">
-		        <div id="dd-demo-canvas3">
-		            <div id="dd-demo-1" class="dd-demo"><div>jajaja</div><div class="dd-handle">1</div></div>
-		            <div id="dd-demo-2" class="dd-demo"><div>2</div></div>
-		            <div id="dd-demo-3" class="dd-demo"><div>3</div></div>
-		        </div>
-		    </div>
-		</div> -->
-<!--         <div id="dd-demo-canvas3">
-            <div id="dd-demo-1" class="dd-demo">
-            	<div class="selector-body"></div>
-            	<div class="dd-handle">G6</div>
-            </div>
-        </div>
- -->
+
 	    <script src="lib/jquery/jquery.js"></script>
 	    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+	    <script src="lib/jquery/iscroll.js"></script>
 		<script type="text/javascript" src="conf/yuiconf.js"></script>
-		<script src="lib/yui3/build/yui/yui-min.js"></script>
+        <script type="text/javascript" src="../../framework/yui3/3.11.0/build/yui/yui-min.js"></script>
 		<script type="text/javascript" src="conf/appconf.js"></script>
 		<script type="text/javascript" src="script/app.js"></script>
 	</body>

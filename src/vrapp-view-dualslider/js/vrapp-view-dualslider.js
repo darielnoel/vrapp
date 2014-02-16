@@ -1,9 +1,8 @@
 Y.namespace('VrApp');
 
-var ATTR_BOUNDINGBOX = 'boundingBox',
-	ATTR_CONTENTBOX = 'contentBox',
+//TODO: Optimizar esta clase string, logicas repetidas, etc
 
-	MyDualSlider = Y.Base.create('vrapp-view-dualslider', Y.Base, [], {
+var MyDualSlider = Y.Base.create('vrapp-view-dualslider', Y.Base, [], {
 
 		/**
 		 * Description
@@ -14,7 +13,6 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 		initializer: function (config) {
 			var instance = this;
 			instance._publishEvents();
-			console.log('Hello DualSlider');
 		},
 
 		/**
@@ -28,8 +26,18 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 				emitFacade: true,
 				broadcast: 1
 			});
+
+			instance.publish('selectHandle', {
+				emitFacade: true,
+				broadcast: 1
+			});
 		},
 
+		/**
+		 * La misma logica del render de los widgets de YUI
+		 * @method render
+		 * @return 
+		 */
 		render: function(){
 			var instance = this;
 			instance.renderUI();
@@ -43,69 +51,6 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 		 * @return 
 		 */
 		renderUI: function () {
-			var instance = this,
-				trackNode = instance.get('track').node,
-				minThumbNode = instance.get('minThumb').node,
-				maxThumbNode = instance.get('maxThumb').node,
-				thumbTrackNode = instance.get('thumbTrack').node,
-				thumbTrackDelay,
-				nodeLength;
-
-			//Inicializando el tamanno en pixeles del node traking
-			nodeLength = instance.get('track').node.get('offsetWidth');
-
-			console.log('renderUI.nodeLength');
-			console.log(nodeLength);
-
-
-			// //Pivote central de los thumbs
-			// var minSelectorArm = minThumbNode.one('.selector-arm').get('offsetWidth')/2,
-			// 	maxSelectorArm = maxThumbNode.one('.selector-arm').get('offsetWidth')/2;
-
-			// instance.get('minThumb').middlePivot = minThumbNode.get('offsetWidth')/2 + minSelectorArm;
-			// instance.get('maxThumb').middlePivot = maxThumbNode.get('offsetWidth')/2 + maxSelectorArm;
-
-			//Pivote central de los thumbs
-			var minSelectorArm = minThumbNode.one('.selector-arm').getX(),
-				maxSelectorArm = maxThumbNode.one('.selector-arm').getX();
-
-
-
-			instance.get('minThumb').middlePivot = minSelectorArm - minThumbNode.getX();
-			instance.get('maxThumb').middlePivot = maxSelectorArm - maxThumbNode.getX();
-
-			console.log('minThumb.middlePivot');
-			console.log(instance.get('minThumb').middlePivot);
-
-			console.log('maxThumb.middlePivot');
-			console.log(instance.get('maxThumb').middlePivot);
-
-
-
-
-
-
-
-			//Delay entre el track general y el track de los thumbs
-			thumbTrackDelay = trackNode.getX() - thumbTrackNode.getX();
-			instance.get('thumbTrack').delay = thumbTrackDelay;
-
-			console.log('YUI3.trackNode Position');
-			console.log(trackNode.getX());
-
-			console.log('YUI3.thumbTrackNode Position');
-			console.log(thumbTrackNode.getX());
-
-
-			console.log('renderUI.thumbTrackDelay.YUI');
-			console.log(thumbTrackDelay);
-
-			
-
-
-
-			instance.set('nodeLength', nodeLength);
-
 		},
 
 		/**
@@ -114,61 +59,23 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 		 * @return 
 		 */
 		bindUI: function () {
-			// var instance = this,
-			// 	contentBox = instance.get(ATTR_CONTENTBOX),
-			// 	minThumbDOMNode = instance.get('minThumb').node.getDOMNode(),
-			// 	maxThumbDOMNode = instance.get('maxThumb').node.getDOMNode();
-
-			
-
-			// //TODO: touchstart Event
-			// minThumbDOMNode.addEventListener('touchstart', function(e){
-			// 	instance.syncThumbOnStart(e, instance.get('minThumb'));
-			// 	e.preventDefault(); // prevent default click behavior
-			// });
-
-			// maxThumbDOMNode.addEventListener('touchstart', function(e){
-
-			// });
-
-			// //TODO: touchmove Event
-			// minThumbDOMNode.addEventListener('touchmove', function(e){
-			// 	instance.syncThumbOnMove(e, instance.get('minThumb'));
-			// 	e.preventDefault();				
-			// });
-			// maxThumbDOMNode.addEventListener('touchmove', instance.maxThumbNodeMoveHandle);
-
-		},
-
-		syncThumbOnStart: function(e, thumb){
 			var instance = this,
-				touchobj = e.changedTouches[0], // reference first touch point
-				boxleft =  thumb.node.getX() + thumb.middlePivot,//parseInt(box2.style.left) // get left position of box
-				startx = parseInt(touchobj.clientX); // get x coord of touch point
-
-				thumb.startx = startx;
-				thumb.boxleft = boxleft;
-		},
-
-		syncThumbOnMove: function(e, thumb){
-			var instance = this;
-				var touchobj = e.changedTouches[0], // reference first touch point for this event
-					dist = parseInt(touchobj.clientX) - thumb.startx, // calculate dist traveled by touch point
-					boxleft = thumb.boxleft,
-					positionNodeValue = 0,
-					positionValue;
-
-				//Dar una mayor sensacion de movimiento
-				dist = dist * 1.2;
-				positionNodeValue = boxleft + dist;
-
-				positionValue = positionNodeValue / instance.get('conversionRatio');
+				minThumb = instance.get('minThumb'),
+				maxThumb = instance.get('maxThumb'),
+				selectorHandleNode,
+				keyCollection = instance.get('keyCollection');
 
 
-				instance.syncThumbByValue(thumb, positionValue);
-				// move box according to starting pos plus dist
-				// with lower limit 0 and upper limit 380 so it doesn't move outside track:
-				//thumb.node.setStyle('left', ( (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px');
+			//TODO: Debe ser optimizado hay codigo repetido aqui
+			selectorHandleNode = minThumb.node.one('.key-selector-arm');
+			selectorHandleNode.setAttribute('data-key', keyCollection[minThumb.value].pitchName);
+			selectorHandleNode.on('gesturemovestart', instance.gesturemovestartHandle,{},instance);
+
+			selectorHandleNode = maxThumb.node.one('.key-selector-arm');
+			selectorHandleNode.setAttribute('data-key', keyCollection[maxThumb.value].pitchName);
+			selectorHandleNode.on('gesturemovestart', instance.gesturemovestartHandle,{}, instance);
+
+
 		},
 
 		/**
@@ -177,90 +84,207 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 		 * @return 
 		 */
 		syncUI: function () {
+		},
+
+		/**
+		 * Sincroniza la pocision del thumb
+		 * @method syncThumbByValue
+		 * @param {} thumbKey
+		 * @param {} value
+		 * @return 
+		 */
+		syncThumbByValue: function(thumbKey, value){
 			var instance = this,
-				contentBox = instance.get('ATTR_CONTENTBOX'),
-				minThumb = instance.get('minThumb'),
-				maxThumb = instance.get('maxThumb'),
-				range = instance.get('range'),
-				conversionRatio;
+				key = instance.get('keyCollection')[value],
+				thumb = instance.get(thumbKey),
+				thumbValue = thumb.value;
 
-			conversionRatio = instance.get('nodeLength') / range;
-			instance.set('conversionRatio', conversionRatio);
-
-			console.log('syncUI.conversionRatio');
-			console.log(conversionRatio);
-
-			instance.syncThumbByValue(minThumb, minThumb.value);
-			instance.syncThumbByValue(maxThumb, maxThumb.value);
-
-
-
-		},
-
-		minThumbNodeMoveStartHandle: function(e){
-			touchobj = e.changedTouches[0] // reference first touch point
-			boxleft = parseInt(box2.style.left) // get left position of box
-			startx = parseInt(touchobj.clientX) // get x coord of touch point
-			e.preventDefault() // prevent default click behavior
-
-			console.log(touchobj);
-		},
-
-		minThumbNodeMoveHandle: function(e){
-
-		},
-
-		maxThumbNodeMoveStartHandle: function(e){
-			var touchobj = e.changedTouches[0];
-			console.log(touchobj);
-		},
-
-		maxThumbNodeMoveHandle: function(e){
-
-		},
-
-		//Dado un valor sincroniza la pocision del thumb
-		syncThumbByValue: function(thumb, value){
-			var instance = this,
-				contentBox = instance.get('ATTR_CONTENTBOX'),
-				valuePixel,
-				conversionRatio = instance.get('conversionRatio'),
-				middlePivot = thumb.middlePivot;
-
-			valuePixel = value * conversionRatio;
-
-			//Pivote central
-			valuePixel = valuePixel - middlePivot; //instance.get('thumbTrack').delay;
-
-			console.log('middlePivot');
-			console.log(middlePivot);
-
-
-			//TODO: Ver prk pasa esto?
-			if(thumb.type === 'minThumb'){
-				valuePixel = valuePixel + instance.get('thumbTrack').delay;
+			if(thumbValue === value){
+				//No se hace nada si son iguales
 			} else {
-				// valuePixel = (value+1) * conversionRatio;
-				// valuePixel = valuePixel - middlePivot;
-			}
-			
-			console.log('syncThumbByValue.valuePixel del pivote central');
-			console.log(valuePixel);
-			thumb.node.setStyle('left',valuePixel +'px');
+				//Desmarco todas las teclas con una animacion suave
+				instance.selectingKeysBehavior([0,41], 'deselect');
 
-			instance.fire('vrapp-view-dualslider:valueChange', {
-				data: value
+				//Quito el thumb de su pocision actual
+				//Pongo el thumb en la nueva posicion
+				instance.syncThumbNode(thumb, key);
+
+				thumb.value = value;
+
+				instance.set(thumbKey,thumb);
+
+				//marco todas las teclas con una animacion suave 
+				instance.selectingKeysBehavior([instance.get('minThumb').value,instance.get('maxThumb').value], 'select');
+
+				//Se dispara un evento de que el valor ha cambiado
+				//pitchName
+				instance.fire('vrapp-view-dualslider:valueChange', {
+					data: value
+				});
+			}
+
+
+		},
+
+		/**
+		 * Sincroniza el nodo del thumb
+		 * @method syncThumbNode
+		 * @param {} thumb
+		 * @param {} key
+		 * @return 
+		 */
+		syncThumbNode: function(thumb, key){
+			var instance = this,
+				thumbNode = thumb.node,
+				clone,
+				newThumbNodeHTML,
+				trackNode = instance.get('track').node,
+				keyNode,
+				actualKeyId = instance.get('keyCollection')[thumb.value],
+				actualKeyBehavior,
+				selectorHandleNode;
+
+			//Oculto el nodo para ganar tiempo
+			thumbNode.hide(true);
+
+			//Quito el thumb de su pocision actual
+			thumbNode.purge();
+			thumbNode.remove();
+
+			//Restauro la tecla como estaba
+			actualKeyBehavior = instance.get('blackBehaviorRenderCollection')[actualKeyId.pitchName[0]];
+
+			trackNode.one('.' + actualKeyId.pitchName).set('innerHTML', instance.get('thumbNodeRenderBehaviorHtml')[actualKeyBehavior]);
+
+			//create Selector Node
+			newThumbNodeHTML = instance.createHTMLThumbNode(key,thumb);
+
+			//Pongo el thumb en la nueva posicion
+			keyNode = trackNode.one('.' + key.pitchName);
+			keyNode.set('innerHTML', newThumbNodeHTML);
+
+
+			//Pongo oyentes a los handle
+			selectorHandleNode = keyNode.one('.key-selector-arm');
+
+			selectorHandleNode.setAttribute('data-key', key.pitchName);
+
+			selectorHandleNode.purge();
+			selectorHandleNode.on('gesturemovestart', instance.gesturemovestartHandle, {}, instance);
+
+			keyNode.one('.key-selector-arm').transition({
+			    easing: 'ease-out',
+			    duration: 0.3, // seconds
+			    opacity: '1',
+			}, function() {
+				console.log('termino la animacion');
 			});
 		},
 
-		syncData: function(data){
+		/**
+		 * Cuando se presiona algun handle
+		 * @method gesturemovestartHandle
+		 * @param {} e
+		 * @return 
+		 */
+		gesturemovestartHandle: function(e){
 			var instance = this;
+			instance.fire('selectHandle', {
+				data: {
+					event: e,
+					key: e.currentTarget.getAttribute('data-key') 
+				}
+			});
 		},
-		//pos.left pos.top
-		syncIndicator: function(pos){
-			var instance = this,
-				contentBox = instance.get(ATTR_CONTENTBOX);
 
+		/**
+		 * Se crea el nodo del Thumb
+		 * @method createHTMLThumbNode
+		 * @param {} key
+		 * @param {} thumb
+		 * @return nodeHTML
+		 */
+		createHTMLThumbNode: function(key,thumb){
+			var instance = this,
+				thumbNodeRenderBehavior = instance.get('blackBehaviorRenderCollection')[key.pitchName[0]],
+				thumbType = thumb.type,
+				thumbNode,
+				nodeHTML,
+				typeSelectorClass = 'key-selector-max',
+				thumbNodeRenderBehaviorHtml = instance.get('thumbNodeRenderBehaviorHtml')[thumbNodeRenderBehavior],
+				selectorHandleCaption = key.pitchName,
+				selectorHandleTittle = 'Higher';
+
+			if(thumb.type === 'minThumb'){
+				typeSelectorClass = 'key-selector-min';
+				selectorHandleTittle = 'Lower&nbsp;';
+			}
+
+			nodeHTML =  '<div class="key-selector ' + typeSelectorClass + '">' + 
+							'<div class="key-selector-keycover">'+
+								thumbNodeRenderBehaviorHtml +
+							'</div>' +
+							'<div class="key-selector-arm" style="opacity:0">' +
+								'<div class="key-selector-handle-container">'+
+									'<div class="selector-handle">'+
+										'<div class="selector-handle-caption">' + selectorHandleCaption + '</div>' +
+									'</div>' + 
+									'<div class="selector-handle-tittle">' + selectorHandleTittle + '</div>' +
+								'</div>' +
+							'</div>' +
+						'</div>';
+
+			return nodeHTML;
+			//veo que tipo de nodo tengo que crear
+		},
+
+		/**
+		 * Se marcan como seleccionadas las teclas que coincidan con un rango
+		 * @method selectingKeysBehavior
+		 * @param {} range
+		 * @param {} behavior
+		 * @return 
+		 */
+		selectingKeysBehavior: function(range, behavior){
+			var instance = this,
+				track = instance.get('track').node,
+				keyCollection = instance.get('keyCollection'),
+				minRange = range[0],
+				maxRange = range[1],
+				i = minRange,
+				keyNode,
+				color;
+
+			for (i; i <= maxRange; i++) {
+				keyNode = track.one('.'+ keyCollection[i].pitchName);
+				if(keyNode){
+					if(behavior === 'deselect'){
+						color = 'white';
+					}else {
+						color = '#edeff1';
+					}
+					instance.selectingKeyAnimationBehavior(keyNode, color);
+				}								
+			};
+		},
+
+		/**
+		 * La animacion que se le aplica a las teclas cuando son seleccionadas o desel
+		 * @method selectingKeyAnimationBehavior
+		 * @param {} node
+		 * @param {} color
+		 * @return 
+		 */
+		selectingKeyAnimationBehavior: function(node, color){
+			var instance = this;
+
+			node.transition({
+			    easing: 'ease-out',
+			    duration: 0.3, // seconds
+			    backgroundColor: color,
+			}, function() {
+				console.log('termino la animacion');
+			});
 		}
 
 
@@ -271,40 +295,33 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 					node: {}
 				}
 			},
-			thumbTrack:{
-				value: {
-					node: {},
-					delay: 0
-				}
-			},
 			minThumb: {
 				value: {
 					value:30,
 					type:'minThumb',
-					node:{},
-					middlePivot: 0,
-					startx:0,
-					boxleft:0
+					node:{}
 				}
 			},
 			maxThumb: {
 				value: {
 					value:100,
 					type:'maxThumb',
-					node:{},
-					middlePivot: 0,
-					startx:0,
-					boxleft:0,
+					node:{}
 				}
 			},
-			range:{
-				value:100
+			keyCollection:{
+				value:[]
 			},
-			nodeLength:{
-				value:100
+			//existen 3 comportamientos basicos de visualizacion
+			blackBehaviorRenderCollection:{
+				value:{}
 			},
-			conversionRatio: {
-				value: 1
+			thumbNodeRenderBehaviorHtml:{
+				value:{
+					left: '<div class="black pull-left"></div>',
+					right: '<div class="black pull-right"></div>',
+					complex: '<div class="black pull-left"></div><div class="black pull-right"></div>'
+				}
 			}
 		}
 
