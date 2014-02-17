@@ -1,5 +1,13 @@
 Y.namespace('VrApp');
 
+
+var IMG_WIDTH = 392;
+var currentImg=0;
+var maxImages=2;
+var speed=500;
+
+var imgs;
+
 var ATTR_CONTENTBOX = 'contentBox',
 	ATTR_BOUNDINGBOX = 'boundingBox',
 
@@ -27,103 +35,82 @@ var ATTR_CONTENTBOX = 'contentBox',
 				contentBox = instance.get(ATTR_CONTENTBOX);
 		},
 
-		bindUI: function(){
+		bindTouch: function(){
 			var instance = this,
 				boundingBox = instance.get(ATTR_BOUNDINGBOX);
-			Y.one('.la li').set('innerHTML','joder');
 
 
-			boundingBox.one('ul').on("gesturemovestart", function(e) {
-
-			    var item = e.currentTarget,
-			        target = e.target,
-			        container = e.container,
-			        MIN_SWIPE = 1,
-			        gestureMoveHandle = instance.get('gestureMoveHandle');
-
-			    if (gestureMoveHandle){
-			    	gestureMoveHandle.detach();
-			    }
-			    item.setData("swipeStart", e.pageX);
-
-			    gestureMoveHandle = item.on("gesturemove", function(e) {
-			        var swipeStart = item.getData("swipeStart"),
-			            swipeEnd = e.pageX,
-			            isSwipeLeft = (swipeStart - swipeEnd) > MIN_SWIPE;
-
-			        if (isSwipeLeft) {
-			        	console.log('isSwipeLeft');
-			            Y.one('.la li').set('innerHTML','swipeleft');
-			            gestureMoveHandle.detach();
-			            var liNode = boundingBox.one('#'+instance.get('viewIdCollection')[instance.get('activeView')]);
-			            instance.hideLiUI(liNode, function(){
-			            	console.log('ha acabado');
-			            	console.log(instance.get('viewIdCollection'));
-			            	liNode = boundingBox.one('#'+instance.get('viewIdCollection')[1]);
-			            	console.log(liNode);
-			            	instance.showLiUI(liNode, function(){
-				            	console.log('ha acabado pinga');
-
-				            });
-			            }, 'hideEffect');
-			        }
-
-			    });
-
-			    instance.set('gestureMoveHandle', gestureMoveHandle);
-
-
-			    // item.once("gesturemoveend", function(e) {
-			    //     var swipeStart = item.getData("swipeStart"),
-			    //         swipeEnd = e.pageX,
-			    //         isSwipeLeft = (swipeStart - swipeEnd) > MIN_SWIPE;
-
-			    //     if (isSwipeLeft) {
-			    //     	console.log('isSwipeLeft');
-			    //        Y.one('.la li').set('innerHTML','swipeleft');
-			    //     }
-
-			    // });
-			});
-
-			// boundingBox.getDOMNode().onscroll = function(e){
-			// 	console.log('nativo');
-			// 	console.log(e);
-			// 	Y.one('.la li').set('innerHTML',e.timeStamp);
-			// };
-
-			// boundingBox.on("scroll", function(e){
-			// 	Y.one('.la li').set('innerHTML','Scroll'+ boundingBox.getDOMNode().scrollLeft+new Date());
-			// 	console.log(e);
-			// });
-
-			// boundingBox.on("touchstart", function(){
-			// 	Y.one('.la li').set('innerHTML','Se muevesss');
-			// 	var scrollCaptureInterval = instance.get('scrollCaptureInterval');
-			// 	if(scrollCaptureInterval){
-			// 		scrollCaptureInterval.stop();
-			// 	}
-			// 	// scrollCaptureInterval = Y.later(200, Y, function(e){
-			//  //        //console.log(scroller.scrollLeft);
-			//  //        Y.one('.la li').set('innerHTML',new Date() + boundingBox.getDOMNode().scrollLeft);
-			//  //    },{},true);
-			// });
-
-			// boundingBox.on("touchmove", function(e){
-			// 	//Y.one('.la li').set('innerHTML','Se esta moviendo');
-			// 	//Y.one('.la li').set('innerHTML',boundingBox.getDOMNode().scrollLeft);
-			// 	boundingBox.getDOMNode().scrollLeft;
-			// });
-		
-			boundingBox.on("touchend", function(e){
-				Y.one('.la li').set('innerHTML',boundingBox.getDOMNode().scrollLeft);
-				//console.log(boundingBox.getHTMLNode().scrollLeft);
-				var scrollCaptureInterval = instance.get('scrollCaptureInterval');
-				if(scrollCaptureInterval){
-					scrollCaptureInterval.stop();
+				
+			var swipeOptions=
+			{
+				triggerOnTouchEnd : true,	
+				swipeStatus : Y.bind(instance.swipeStatus,instance),
+				// allowPageScroll:"vertical",
+				threshold:75			
 				}
-
+			
+			$(function()
+			{				
+				imgs = $("#scroll");
+				imgs.swipe( swipeOptions );
 			});
+
+		},
+
+		swipeStatus: function(event, phase, direction, distance){
+			console.log('swipeStatus');
+			var instance = this;
+
+			//If we are moving before swipe, and we are going Lor R in X mode, or U or D in Y mode then drag.
+			if( phase=="move" && (direction=="left" || direction=="right") )
+			{
+				var duration=0;
+				
+				if (direction == "left")
+					instance.scrollImages((IMG_WIDTH * currentImg) + distance, duration);
+				
+				else if (direction == "right")
+					instance.scrollImages((IMG_WIDTH * currentImg) - distance, duration);
+				
+			}
+			
+			else if ( phase == "cancel")
+			{
+				instance.scrollImages(IMG_WIDTH * currentImg, speed);
+			}
+			
+			else if ( phase =="end" )
+			{
+				if (direction == "right")
+					instance.previousImage()
+				else if (direction == "left")			
+					instance.nextImage()
+			}
+
+		},
+
+		previousImage: function(){
+			var instance = this;
+			currentImg = Math.max(currentImg-1, 0);
+			instance.scrollImages( IMG_WIDTH * currentImg, speed);
+		},
+	
+		nextImage: function(){
+			var instance = this;
+			currentImg = Math.min(currentImg+1, maxImages-1);
+			instance.scrollImages( IMG_WIDTH * currentImg, speed);
+		},
+			
+		/**
+		* Manuallt update the position of the imgs on drag
+		*/
+		scrollImages: function(distance, duration){
+			$(".view-active").css("-webkit-transition-duration", (duration/1000).toFixed(1) + "s");
+			
+			//inverse the number we set in the css
+			var value = (distance<0 ? "" : "-") + Math.abs(distance).toString();
+			
+			$(".view-active").css("-webkit-transform", "translate3d("+value +"px,0px,0px)");
 		},
 
 		/**
@@ -134,6 +121,7 @@ var ATTR_CONTENTBOX = 'contentBox',
 		syncUI: function () {
 			var instance = this;
 			instance.renderChilds(instance.get('childModelCollection'));
+			instance.bindTouch();
 		},
 
 		/**
@@ -163,7 +151,7 @@ var ATTR_CONTENTBOX = 'contentBox',
 				for (i; i < size; i++) {
 					if(i !== 0 && i%6 === 0){
 						console.log(i);
-						liNode = itemsContainer.appendChild('<li class="view-hidden" id="'+ viewId +i +'"></li>');
+						liNode = itemsContainer.appendChild('<li class="view-hidden45" id="'+ viewId +i +'"></li>');
 						instance.get('viewIdCollection').push(viewId+i);
 					}
 					childWidget = new Y.VrApp.Item(childModelCollection[i]).render(liNode);

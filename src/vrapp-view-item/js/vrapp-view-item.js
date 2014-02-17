@@ -29,7 +29,7 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 			// });
 		},
 
-		BOUNDING_TEMPLATE: '<a class="hidden opacity-hidden" href="#"></a>',
+		BOUNDING_TEMPLATE: '<div class="hidden opacity-hidden scroll-element"></div>',
 		CONTENT_TEMPLATE: null,
 
 
@@ -68,7 +68,16 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 				boundingBox = instance.get(ATTR_BOUNDINGBOX);
 
 			boundingBox.on('click', function (e) {
-				e.stopPropagation();
+				//e.stopPropagation();
+				console.log('click en un link');
+				
+				e.preventDefault();
+			});
+
+			boundingBox.on('touchstart', function (e) {
+				console.log('click en un link');
+				e.preventDefault();
+				//e.stopPropagation();
 			});
 		},
 

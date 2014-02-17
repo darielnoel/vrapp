@@ -1,5 +1,6 @@
 #scroll {
     height:100%;
+/*    width: 1510px;*/
 /*    overflow-x:hidden;
     overflow-y:hidden;*/ 
 }
@@ -31,6 +32,19 @@
 }
 
 #scroll a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #555555;
+    float: left;
+    margin-right: 8%;
+    width: 25%;
+    height: 40%;
+    font-size: 90%;
+    margin-bottom: 5%;
+}
+
+#scroll .scroll-element {
+    display: inline-block;
     text-decoration: none;
     font-weight: bold;
     color: #555555;
