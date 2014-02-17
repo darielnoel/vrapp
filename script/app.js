@@ -14,6 +14,7 @@ YUI().use(
 	'vrapp-view-dualslider',
 	'vrapp-view-container',
 	'async-queue',
+	'event-move',
 	'event-touch',
 function(Y){
 	console.log('Hello world');
@@ -244,25 +245,41 @@ var artistModelCollection = [
 
 
 
-// var artistModelCollection = new Y.VrApp.Container({
-// 	childModelCollection: artistModelCollection
-// }).render('.artist-container');
+var artistModelCollection = new Y.VrApp.Container({
+	childModelCollection: artistModelCollection
+}).render('.artist-container');
+
+
+artistModelCollection.after('render',function(){
+	console.log('after render');
+	var scroller = document.getElementById('scroll');
+	console.log(scroller);
+	//scroller.scrollLeft += 100;
+	console.log(scroller.scrollLeft);
+    // Y.later(200, Y, function(e){
+    //     console.log(scroller.scrollLeft);
+    //     //scroller.scrollLeft += '100';
+    // },{},true);
+});
+var scroller = document.getElementById('scroll');
+
+
 
 var myScroll;
 
-function loaded() {
-	myScroll = new iScroll('wrapper', {
-		snap: true,
-		momentum: false,
-		hScrollbar: false,
-		onScrollEnd: function () {
-			document.querySelector('#indicator > li.active').className = '';
-			document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-		}
-	 });
-}
+// function loaded() {
+// 	myScroll = new iScroll('wrapper', {
+// 		snap: true,
+// 		momentum: false,
+// 		hScrollbar: false,
+// 		onScrollEnd: function () {
+// 			document.querySelector('#indicator > li.active').className = '';
+// 			document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+// 		}
+// 	 });
+// }
 
-loaded();
+// loaded();
 
 
 

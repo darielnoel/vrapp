@@ -115,7 +115,7 @@
 }
 
 .view-hidden {
-	display:none;
+	display:none!important;
 	position: relative;
 	left:100%;
 }
