@@ -240,68 +240,6 @@ var artistModelCollection = [
 		picture: 'luciano.png',//"Path de la imagen asociada"
 		twitter: '@pavarotti',
 		behavior:'blocked'
-	},
-	{
-		vocalRange:{
-			min: 20,//de 0 a 41
-			max: 26
-		},
-		name:"Bruno Mars",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'bruno.png',//"Path de la imagen asociada"
-		twitter: '@bruno',
-		behavior:'blocked4'
-	},
-	{
-		vocalRange:{
-			min: 20,//de 0 a 41
-			max: 26
-		},
-		name:"Adelle",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'adele.png',//"Path de la imagen asociada"
-		twitter: '@adelle',
-		behavior:'blocked'
-	},
-	{   
-		minVR: 20,
-		maxVR: 26,
-		name:"Luciano Pavarotti",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'luciano.png',//"Path de la imagen asociada"
-		twitter: '@pavarotti',
-		behavior:'blocked'
-	},
-	{
-		vocalRange:{
-			min: 20,//de 0 a 41
-			max: 26
-		},
-		name:"Bruno Mars",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'bruno.png',//"Path de la imagen asociada"
-		twitter: '@bruno',
-		behavior:'blocked4'
-	},
-	{
-		vocalRange:{
-			min: 20,//de 0 a 41
-			max: 26
-		},
-		name:"Adelle",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'adele.png',//"Path de la imagen asociada"
-		twitter: '@adelle',
-		behavior:'blocked'
-	},
-	{   
-		minVR: 20,
-		maxVR: 26,
-		name:"Luciano Pavarotti",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'luciano.png',//"Path de la imagen asociada"
-		twitter: '@pavarotti',
-		behavior:'blocked'
 	}
 ];
 
@@ -318,10 +256,15 @@ artistModelCollection.after('render',function(){
 	console.log(scroller);
 	//scroller.scrollLeft += 100;
 	console.log(scroller.scrollLeft);
-    // Y.later(200, Y, function(e){
-    //     console.log(scroller.scrollLeft);
-    //     //scroller.scrollLeft += '100';
-    // },{},true);
+	indicatorHMTL = '<div class="indicator-nav">\
+						<ul class="indicator-content">\
+							<li class="active">1</li>\
+							<li>2</li>\
+							<li>3</li>\
+						</ul>\
+					</div>';
+
+	Y.one('.artist-container').appendChild(indicatorHMTL);
 });
 var scroller = document.getElementById('scroll');
 
