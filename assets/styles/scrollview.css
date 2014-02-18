@@ -1,6 +1,7 @@
 #scroll {
     height:100%;
-/*    width: 1510px;*/
+    float: left;
+    width: 1510px;
 /*    overflow-x:hidden;
     overflow-y:hidden;*/ 
 }
@@ -15,7 +16,8 @@
     display: inline-block;
     width: 100%;
     padding-left: 0px;
-    height: 155px;       
+    height: 155px; 
+    -webkit-transform: translate3d(0%, 0px, 0px);     
 }
 
 #scroll li:before {
