@@ -56,7 +56,6 @@ var ATTR_CONTENTBOX = 'contentBox',
 			});
 
 		},
-
 		swipeStatus: function(event, phase, direction, distance){
 			console.log('swipeStatus');
 			var instance = this;
