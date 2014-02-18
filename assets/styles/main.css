@@ -51,8 +51,6 @@
 	margin-right: 10px;
 }
 
-
-
 .popover p {
 	margin-bottom: 0px;
 }
@@ -190,20 +188,7 @@
 	max-width: 100%;
 }
 
-.artist-scrollview .popover .arrow:after{
-	border-bottom-color: #edeff1;
-}
 
-.artist-scrollview .popover .arrow{
-	border-bottom-color: #edeff1;
-}
-
-.artist-scrollview .popover{
-	/*overflow: auto;*/
-	overflow: hidden;
-	height: 205px;
-	margin-top: 0px;
-}
 
 .hscrollbar
 {

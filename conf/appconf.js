@@ -1,4 +1,5 @@
 var APP_CONFIG = {
+		routes: ROUTES_CONFIG,
 		defaultRange:{
 			min: 20,
 			max: 30
@@ -61,6 +62,137 @@ var APP_CONFIG = {
 			G: 'complex',
 			A: 'complex',
 			B: 'left'
+		},
+
+		tests: {
+			artistModelCollection: [
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Bruno Mars",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'bruno.png',//"Path de la imagen asociada"
+						twitter: '@bruno',
+						behavior:'blocked4'
+					},
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Adelle",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'adele.png',//"Path de la imagen asociada"
+						twitter: '@adelle',
+						behavior:'blocked'
+					},
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Luciano Pavarotti",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'luciano.png',//"Path de la imagen asociada"
+						twitter: '@pavarotti',
+						behavior:'blocked'
+					},
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Bruno Mars",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'bruno.png',//"Path de la imagen asociada"
+						twitter: '@bruno',
+						behavior:'blocked4'
+					},
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Adelle",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'adele.png',//"Path de la imagen asociada"
+						twitter: '@adelle',
+						behavior:'blocked'
+					},
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Luciano Pavarotti",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'luciano.png',//"Path de la imagen asociada"
+						twitter: '@pavarotti',
+						behavior:'blocked'
+					},
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Bruno Mars",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'bruno.png',//"Path de la imagen asociada"
+						twitter: '@bruno',
+						behavior:'blocked4'
+					},
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Adelle",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'adele.png',//"Path de la imagen asociada"
+						twitter: '@adelle',
+						behavior:'blocked'
+					},
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Luciano Pavarotti",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'luciano.png',//"Path de la imagen asociada"
+						twitter: '@pavarotti',
+						behavior:'blocked'
+					},
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Luciano Pavarotti",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'luciano.png',//"Path de la imagen asociada"
+						twitter: '@pavarotti',
+						behavior:'blocked'
+					},
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Luciano Pavarotti",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'luciano.png',//"Path de la imagen asociada"
+						twitter: '@pavarotti',
+						behavior:'blocked'
+					},
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Luciano Pavarotti",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'luciano.png',//"Path de la imagen asociada"
+						twitter: '@pavarotti',
+						behavior:'blocked'
+					},
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Luciano Pavarotti",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'luciano.png',//"Path de la imagen asociada"
+						twitter: '@pavarotti',
+						behavior:'blocked'
+					},
+					{
+						minVr: 20,
+						maxVr: 26,
+						name:"Luciano Pavarotti",
+						score: 3,//De 0 a 10 indica relevancia
+						picture: 'luciano.png',//"Path de la imagen asociada"
+						twitter: '@pavarotti',
+						behavior:'blocked'
+					}
+				]
 		}	
 };
 

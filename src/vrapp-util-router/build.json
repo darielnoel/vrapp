@@ -1,0 +1,10 @@
+{
+    "name": "vrapp-util-router",
+    "builds": {
+        "vrapp-util-router": {
+            "jsfiles": [
+                "js/vrapp-util-router.js"
+            ]
+        }
+    }
+}

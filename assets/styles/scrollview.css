@@ -1,32 +1,47 @@
-#scroll ul {
+.artist-scrollview .popover .arrow:after{
+    border-bottom-color: #edeff1;
+}
+
+.artist-scrollview .popover .arrow{
+    border-bottom-color: #edeff1;
+}
+
+.artist-scrollview .popover{
+    overflow: hidden;
+    height: 205px;
+    margin-top: 0px;
+}
+
+
+
+.artist-scrollview-scroll ul {
     white-space:nowrap;
     list-style:none;
     padding: 5% 0% 0% 9%;
 }
-#scroll li {
+.artist-scrollview-scroll li {
     text-align: center;
     display: -moz-inline-box;
     display: inline-block;
     width: 100%;
-    padding-left: 0px;
+    padding-right: 0px;
     height: 155px; 
     -webkit-transform: translate3d(0%, 0px, 0px);     
 }
 
-#scroll li:before {
+.artist-scrollview-scroll li:before {
     content: "";
     color: #3498db;
     font-size: 250%;
     vertical-align: middle;
 }
 
-#scroll img {
+.artist-scrollview-scroll img {
     border:0;
-/*    width: 45px;*/
     height: 40px;
 }
 
-#scroll a {
+.artist-scrollview-scroll a {
     text-decoration: none;
     font-weight: bold;
     color: #555555;
@@ -38,7 +53,7 @@
     margin-bottom: 5%;
 }
 
-#scroll .scroll-element {
+.artist-scrollview-scroll .scroll-element {
     display: inline-block;
     text-decoration: none;
     font-weight: bold;
@@ -51,17 +66,13 @@
     margin-bottom: 5%;
 }
 
-#scroll a.first-element-scroll{
+.artist-scrollview-scroll a.first-element-scroll{
     margin-left: 0;
 }
 
-#scroll span {
+.artist-scrollview-scroll span {
 padding: 5px 0 15%;
 display:block;
-}
-
-.artist-container{
-
 }
 
 .opacity-hidden{
@@ -70,20 +81,6 @@ display:block;
 
 body{
     margin: 0px;
-}
-
-/*El Scroller que he encontrado*/
-#scroller li {
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -o-box-sizing:border-box;
-    box-sizing:border-box;
-    display:block; float:left;
-    width:300px; height:160px;
-    text-align:center;
-    font-family:georgia;
-    font-size:18px;
-    line-height:140%;
 }
 
 .indicator-content, .indicator-content > li {

@@ -1,0 +1,11 @@
+{
+    "name"       : "vrapp-util-router",
+    "displayName": "Gallery: vrapp-util-router",
+    "description": "*Summary Goes Here*",
+    "author"     : [ "" ],
+    "use"        : [ "vrapp-util-router" ],
+
+    "tags": [ "gallery" ],
+
+    "examples": []
+}

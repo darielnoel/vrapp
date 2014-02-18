@@ -3,8 +3,6 @@
 	<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 	<meta name="viewport" content="target-densitydpi=160" /> -->
-<!-- 	<meta name="viewport" content="target-densitydpi=device-dpi" /> -->
 		<title>VR App</title>
 		<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
 		<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -232,12 +230,20 @@
 					</div>
 					<div class="row no-padding">
 						<div class="col-xs-12 col-md-12 col-sm-12 artist-scrollview no-padding">
-								<div class="popover bottom artist-container">
-									<div class="center-block loader" style="display: block;">
+								<div class="popover bottom artist-scrollview-container">
+									<div class="center-block artist-scrollview-loader loader" style="display: block;">
 							            <img src="assets/images/loader32.gif"><br>
 							            Loading
 							        </div>
+							  		<div id="scroll" class="artist-scrollview-scroll" >
+										<ul></ul>
+									</div>
+									<div class="artist-scrollview-indicator-nav indicator-nav hidden">
+										<ul class="artist-scrollview-indicator-content indicator-content">
+										</ul>
+									</div>
 								</div>
+
 						</div>
 						<div class="col-xs-1 col-md-1 col-sm-1"></div>
 					</div>						
@@ -339,6 +345,7 @@
 	    <script src="lib/jquery/jquery.touchSwipe.min.js"></script>
 		<script type="text/javascript" src="conf/yuiconf.js"></script>
         <script type="text/javascript" src="../../framework/yui3/3.11.0/build/yui/yui-min.js"></script>
+        <script type="text/javascript" src="conf/approutes.js"></script>
 		<script type="text/javascript" src="conf/appconf.js"></script>
 		<script type="text/javascript" src="script/app.js"></script>
 	</body>

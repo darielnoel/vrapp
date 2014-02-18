@@ -1,0 +1,7 @@
+{
+    "vrapp-util-router": {
+        "requires": [
+            "base","router"
+        ]
+    }
+}

@@ -1,7 +1,7 @@
 {
     "vrapp-view-container": {
         "requires": [
-			"widget","yql","widget-parent","vrapp-view-item"
+			"widget","vrapp-view-item"
         ],
         "skinnable": true
     }

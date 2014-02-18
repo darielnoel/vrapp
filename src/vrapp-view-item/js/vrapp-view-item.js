@@ -23,10 +23,6 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 		 */
 		_publishEvents: function () {
 			var instance = this;
-			// instance.publish('openitem', {
-			// 	emitFacade: true,
-			// 	broadcast: 1
-			// });
 		},
 
 		BOUNDING_TEMPLATE: '<div class="hidden opacity-hidden scroll-element"></div>',
@@ -68,16 +64,12 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 				boundingBox = instance.get(ATTR_BOUNDINGBOX);
 
 			boundingBox.on('click', function (e) {
-				//e.stopPropagation();
-				console.log('click en un link');
-				
 				e.preventDefault();
 			});
 
 			boundingBox.on('touchstart', function (e) {
 				console.log('click en un link');
 				e.preventDefault();
-				//e.stopPropagation();
 			});
 		},
 
@@ -90,19 +82,12 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 			var instance = this,
 				boundingBox = instance.get(ATTR_BOUNDINGBOX);
 
-			// boundingBox.one('.list-group-item-heading span').set('innerHTML', instance.get('tittle'));
-
-			// boundingBox.one('span.categories').set('innerHTML', instance.get('categories'));
-
-			// boundingBox.one('span.distance').set('innerHTML', instance.get('distance'));
-
-			// instance.syncRating();
-
 		},
 
 		showUI: function(callback,context){
 			var instance = this,
 				boundingBox = instance.get(ATTR_BOUNDINGBOX);
+
 			boundingBox.removeClass('hidden');
 			boundingBox.transition({
 			    easing: 'ease-out',
@@ -112,7 +97,7 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 				callback.call(context);
 			});			
 		},
-
+		//En caso de que un artista este bloqueado muestra el nombre oculto
 		hiddeCharts: function(charts){
 			var instance = this,
 				result = charts[0];

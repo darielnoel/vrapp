@@ -4,18 +4,16 @@ YUI().use(
 	'transition',
 	'event',
 	'event-move',
+	'event-touch',
 	'scrollview',
-	'dd-constrain',
+	'vrapp-controller-view',
+	'vrapp-controller-app',
 	'vrapp-view-view',
 	'vrapp-view-landing',
 	'vrapp-view-main',
-	'vrapp-controller-view',
-	// 'vrapp-view-level',
 	'vrapp-view-dualslider',
 	'vrapp-view-container',
-	'async-queue',
-	'event-move',
-	'event-touch',
+	'vrapp-util-router',
 function(Y){
 	console.log('Hello world');
 
@@ -35,15 +33,16 @@ function(Y){
 
 	Y.namespace('VrApp');
 
-	var App = {
-			AppController:{},
-			View:{},
-			Controller: {
+	Y.VrApp.App = { 
+					Controller: {
+						controllerView: {}
+					},
+					View: {},
+					Util: {} 
+				};
 
-			}
-		},
-		AppController = App.AppController,
-		controllerView;
+	App = Y.VrApp.App;
+
 
 	/**
 	 * Initializing Controllers
@@ -51,7 +50,13 @@ function(Y){
 	 * @return 
 	 */
 	App.initializeControllers = function(){
-		controllerView = new Y.VrApp.ControllerView();
+		App.Controller.controllerView = new Y.VrApp.ControllerView();
+		App.Controller.AppController = new Y.VrApp.AppController();
+	}
+
+	App.initializeUtils = function(){
+		App.Util.Router = new Y.VrApp.Router({routes_own: APP_CONFIG.routes});
+		App.Util.Router.createRoutes();
 	}
 
 	/**
@@ -69,45 +74,38 @@ function(Y){
 		// }).render();
 
 		//Agregando las vistas que se van creando
-		controllerView.addView(App.View.LandingView);
-		controllerView.addView(App.View.MainView);
+		App.Controller.controllerView.addView(App.View.LandingView);
+		App.Controller.controllerView.addView(App.View.MainView);
 
 		//Estableciendo como activa la vista App.View.LandingView
-		controllerView.setActiveView(0);
+		App.Controller.controllerView.setActiveView(0);
 
-
-		// App.View.LevelView = new Y.VrApp.LevelView({
-		// 	srcNode:'.frequency-level'
-		// }).render();
 	},
 
+	 
 	App.initializeControllers();
+	App.initializeUtils();
 	App.initializeViews();
 
-
-	//Pruebas
-	// Y.one('#testInputButton').on('click',function(e){
-
-	// });
 
 
 	//Se escucha el evento de proxima vista de la landing page
 	Y.on('vrapp-view-landing:nextview', function(){
-		controllerView.changeToNextView();
+		App.Controller.controllerView.changeToNextView();
 	});
 
 	//Se escucha el evento de ir atras de la barra
 	Y.one('.header').on('click', function(e){
-		controllerView.changeToPreviousView();
+		App.Controller.controllerView.changeToPreviousView();
 	});
 
-//---Dual slider 1----------------------------------------------------------------------
+//---Seleccionador de Rangos----------------------------------------------------------------------
 	Y.on('vrapp-view-dualslider:selectHandle',function(e){
 		console.log('Se escucha el evento en el main');
 		console.log(e.data);
 	});
 
-	var dualSlider = new Y.VrApp.DualSlider({
+	var rangeSlider = new Y.VrApp.DualSlider({
 		track: {
 			node: Y.one('.track')
 		},
@@ -125,192 +123,24 @@ function(Y){
 		blackBehaviorRenderCollection: APP_CONFIG.blackBehaviorRenderCollection
 	});
 
-	dualSlider.render();
+	rangeSlider.addTarget(App.Util.Router);
 
-	dualSlider.syncThumbByValue('minThumb',10);
-	dualSlider.syncThumbByValue('maxThumb',21);
+	rangeSlider.render();
+
+	rangeSlider.syncThumbByValue('minThumb',10);
+	rangeSlider.syncThumbByValue('maxThumb',21);
 
 //--------------------------------------------------------------
-var artist = {
-	id: 20,
-	vocalRange:{
-		min: 20,//de 0 a 41
-		max: 26
-	},
-	name:"Adelle",
-	score: 3,//De 0 a 10 indica relevancia
-	picture: 'adelle.jpg',//"Path de la imagen asociada"
-	twitter: '@adelle'
-};
+	var artistModelCollection = APP_CONFIG.tests.artistModelCollection,
+		artistContainer;
 
-var artistModelCollection = [
-	{
-		vocalRange:{
-			min: 20,//de 0 a 41
-			max: 26
-		},
-		name:"Bruno Mars",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'bruno.png',//"Path de la imagen asociada"
-		twitter: '@bruno',
-		behavior:'blocked4'
-	},
-	{
-		vocalRange:{
-			min: 20,//de 0 a 41
-			max: 26
-		},
-		name:"Adelle",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'adele.png',//"Path de la imagen asociada"
-		twitter: '@adelle',
-		behavior:'blocked'
-	},
-	{
-		vocalRange:{
-			min: 20,//de 0 a 41
-			max: 26
-		},
-		name:"Luciano Pavarotti",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'luciano.png',//"Path de la imagen asociada"
-		twitter: '@pavarotti',
-		behavior:'blocked'
-	},
-	{
-		vocalRange:{
-			min: 20,//de 0 a 41
-			max: 26
-		},
-		name:"Bruno Mars",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'bruno.png',//"Path de la imagen asociada"
-		twitter: '@bruno',
-		behavior:'blocked4'
-	},
-	{
-		vocalRange:{
-			min: 20,//de 0 a 41
-			max: 26
-		},
-		name:"Adelle",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'adele.png',//"Path de la imagen asociada"
-		twitter: '@adelle',
-		behavior:'blocked'
-	},
-	{
-		vocalRange:{
-			min: 20,//de 0 a 41
-			max: 26
-		},
-		name:"Luciano Pavarotti",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'luciano.png',//"Path de la imagen asociada"
-		twitter: '@pavarotti',
-		behavior:'blocked'
-	},
-	{
-		vocalRange:{
-			min: 20,//de 0 a 41
-			max: 26
-		},
-		name:"Bruno Mars",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'bruno.png',//"Path de la imagen asociada"
-		twitter: '@bruno',
-		behavior:'blocked4'
-	},
-	{
-		vocalRange:{
-			min: 20,//de 0 a 41
-			max: 26
-		},
-		name:"Adelle",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'adele.png',//"Path de la imagen asociada"
-		twitter: '@adelle',
-		behavior:'blocked'
-	},
-	{   
-		minVR: 20,
-		maxVR: 26,
-		name:"Luciano Pavarotti",
-		score: 3,//De 0 a 10 indica relevancia
-		picture: 'luciano.png',//"Path de la imagen asociada"
-		twitter: '@pavarotti',
-		behavior:'blocked'
-	}
-];
+	artistContainer = new Y.VrApp.Container({
+		childModelCollection: artistModelCollection,
+		srcNode: Y.one('.artist-scrollview-container')
+	}).render();
 
-
-
-var artistModelCollection = new Y.VrApp.Container({
-	childModelCollection: artistModelCollection
-}).render('.artist-container');
-
-
-artistModelCollection.after('render',function(){
-	console.log('after render');
-	var scroller = document.getElementById('scroll');
-	console.log(scroller);
-	//scroller.scrollLeft += 100;
-	console.log(scroller.scrollLeft);
-	indicatorHMTL = '<div class="indicator-nav">\
-						<ul class="indicator-content">\
-							<li class="active">1</li>\
-							<li>2</li>\
-							<li>3</li>\
-						</ul>\
-					</div>';
-
-	Y.one('.artist-container').appendChild(indicatorHMTL);
-});
-var scroller = document.getElementById('scroll');
-
-
-
-var myScroll;
-
-// function loaded() {
-// 	myScroll = new iScroll('wrapper', {
-// 		snap: true,
-// 		momentum: false,
-// 		hScrollbar: false,
-// 		onScrollEnd: function () {
-// 			document.querySelector('#indicator > li.active').className = '';
-// 			document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-// 		}
-// 	 });
-// }
-
-// loaded();
-
-
-
-
-
-
-//-----------------------------------------------------------------------------------------
-// Constraining the width, instead of the height for horizontal scrolling
-    // var scrollView = new Y.ScrollView({
-    //     id: 'scrollview',
-    //     srcNode: '#scrollview-content',
-    //     width: '100%',
-    //     flick: {
-    //         minDistance:10,
-    //         minVelocity:0.3,
-    //         axis: "x"
-    //     }
-    // });
-
-    // scrollView.render();
-
-    // // Prevent default image drag behavior
-    // scrollView.get("contentBox").delegate("mousedown", function(e) {
-    //     e.preventDefault();
-    // }, "img");
-
+	//Se le pasa un colleccion de modelos de artistas
+	//artistContainer.syncData([]);
 
 
 });
