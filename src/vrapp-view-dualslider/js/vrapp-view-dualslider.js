@@ -69,11 +69,11 @@ var MyDualSlider = Y.Base.create('vrapp-view-dualslider', Y.Base, [], {
 			//TODO: Debe ser optimizado hay codigo repetido aqui
 			selectorHandleNode = minThumb.node.one('.key-selector-arm');
 			selectorHandleNode.setAttribute('data-key', keyCollection[minThumb.value].pitchName);
-			selectorHandleNode.on('gesturemovestart', instance.gesturemovestartHandle,{},instance);
+			selectorHandleNode.on('gesturemovestart', instance.gesturemovestartHandle,{},instance,'minThumb');
 
 			selectorHandleNode = maxThumb.node.one('.key-selector-arm');
 			selectorHandleNode.setAttribute('data-key', keyCollection[maxThumb.value].pitchName);
-			selectorHandleNode.on('gesturemovestart', instance.gesturemovestartHandle,{}, instance);
+			selectorHandleNode.on('gesturemovestart', instance.gesturemovestartHandle,{},instance, 'maxThumb');
 
 
 		},
@@ -170,7 +170,7 @@ var MyDualSlider = Y.Base.create('vrapp-view-dualslider', Y.Base, [], {
 			selectorHandleNode.setAttribute('data-key', key.pitchName);
 
 			selectorHandleNode.purge();
-			selectorHandleNode.on('gesturemovestart', instance.gesturemovestartHandle, {}, instance);
+			selectorHandleNode.on('gesturemovestart', instance.gesturemovestartHandle, {}, instance, thumb.type);
 
 			keyNode.one('.key-selector-arm').transition({
 			    easing: 'ease-out',
@@ -187,12 +187,16 @@ var MyDualSlider = Y.Base.create('vrapp-view-dualslider', Y.Base, [], {
 		 * @param {} e
 		 * @return 
 		 */
-		gesturemovestartHandle: function(e){
+		gesturemovestartHandle: function(e, extra){
 			var instance = this;
+			console.log('gesturemovestartHandle');
+			console.log(e);
+			console.log(extra);
 			instance.fire('selectHandle', {
 				data: {
 					event: e,
-					key: e.currentTarget.getAttribute('data-key') 
+					key: e.currentTarget.getAttribute('data-key') ,
+					type: extra
 				}
 			});
 		},

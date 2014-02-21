@@ -16,17 +16,28 @@ var ATTR_CONTENTBOX = 'contentBox',
 
 		//Cambia los artistas que coinciden con un rango vocal
 		changeRangeSelectionAction: function(params){
-			console.log('changeRangeSelectionAction');
 
 		},
 
+		openSelectorRangeAction: function(params){
+			console.log('openSelectorRangeAction');
+			console.log(params);
+			if(params.data.type === 'minThumb'){
+				//Abrir el selector de rango min
+				$('#minThumbModal').modal({});
+			}else {
+				//Abrir el selector de rango max
+				$('#maxThumbModal').modal({});
+			}
+		},
+
 		//Abre el selector de rangos para el inferior
-		openMinRangeSelectorAction: function(params){
+		openMinRangeSelectorHelper: function(params){
 
 		},
 
 		//Abre el selector de rangos para el superior
-		openMaxRangeSelectorAction: function(params){
+		openMaxRangeSelectorHelper: function(params){
 
 		},
 
