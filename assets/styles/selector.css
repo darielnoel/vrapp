@@ -48,6 +48,12 @@ content: "";
 	background-color: #edeff1;
 }
 
+.selector-body li.disabled{
+	background-color: #fefefe;
+	color: #e5e5e5;
+	cursor: default;
+}
+
 .modal{
 	overflow-y: hidden;
 	overflow-x: hidden;
@@ -65,5 +71,11 @@ content: "";
 
 body.modal-open{
 	margin-right: 0px;
+}
+
+.fade {
+	opacity: 0;
+	-webkit-transition: opacity .1s linear;
+	transition: opacity .1s linear;
 }
 

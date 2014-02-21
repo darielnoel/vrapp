@@ -15,8 +15,26 @@ var ATTR_CONTENTBOX = 'contentBox',
 		},
 
 		//Cambia los artistas que coinciden con un rango vocal
-		changeRangeSelectionAction: function(params){
+		syncRangeSelectionAction: function(params){
+			console.log('syncRangeSelectionAction');
+			var data = params.data,
+				selectorRange = Y.VrApp.App.View.minRangeSelector;
+			// {keyIndex: 1, type: "minThumb"} 
+			Y.VrApp.App.View.rangeSlider.syncThumbByValue(data.type, data.keyIndex);
 
+			if(data.type === 'minThumb'){
+				console.log('minThumb');
+				Y.VrApp.App.View.maxRangeSelector.syncSelectableRange(data.keyIndex);
+				$('#minThumbModal').modal('hide');
+			} else {
+				console.log('maxThumb');
+				Y.VrApp.App.View.minRangeSelector.syncSelectableRange(data.keyIndex);
+				$('#maxThumbModal').modal('hide');
+			}
+			//Se manda a buscar los nuevos datos
+			//Cuando lleguen se actualiza
+			//Y.VrApp.App.View.rangeSlider.getMinRange(), Y.VrApp.App.View.rangeSlider.getMaxRange()
+			Y.VrApp.App.View.artistContainer.syncData([ ]);
 		},
 
 		openSelectorRangeAction: function(params){

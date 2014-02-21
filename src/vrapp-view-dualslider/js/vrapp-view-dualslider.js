@@ -163,7 +163,6 @@ var MyDualSlider = Y.Base.create('vrapp-view-dualslider', Y.Base, [], {
 			keyNode = trackNode.one('.' + key.pitchName);
 			keyNode.set('innerHTML', newThumbNodeHTML);
 
-
 			//Pongo oyentes a los handle
 			selectorHandleNode = keyNode.one('.key-selector-arm');
 
@@ -189,9 +188,6 @@ var MyDualSlider = Y.Base.create('vrapp-view-dualslider', Y.Base, [], {
 		 */
 		gesturemovestartHandle: function(e, extra){
 			var instance = this;
-			console.log('gesturemovestartHandle');
-			console.log(e);
-			console.log(extra);
 			instance.fire('selectHandle', {
 				data: {
 					event: e,
@@ -289,7 +285,18 @@ var MyDualSlider = Y.Base.create('vrapp-view-dualslider', Y.Base, [], {
 			}, function() {
 				console.log('termino la animacion');
 			});
-		}
+		},
+
+		getMaxRange: function(){
+			var instance = this;
+			return instance.get('minThumb').value;
+		},
+
+		getMinRange: function(){
+			var instance = this;
+			return instance.get('maxThumb').value;
+		},
+
 
 
 	}, {
