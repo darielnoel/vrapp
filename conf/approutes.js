@@ -4,7 +4,7 @@ var ROUTES_CONFIG = {
         path: '',
         event_prefix: 'vrapp-view-dualslider:selectHandle',
         controller: 'AppController',
-        action: 'changeRangeSelectionAction'
+        action: 'openSelectorRangeAction'
     },
 };
 

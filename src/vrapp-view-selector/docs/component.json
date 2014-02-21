@@ -1,0 +1,11 @@
+{
+    "name"       : "vrapp-view-selector",
+    "displayName": "Gallery: vrapp-view-selector",
+    "description": "*Summary Goes Here*",
+    "author"     : [ "" ],
+    "use"        : [ "vrapp-view-selector" ],
+
+    "tags": [ "gallery" ],
+
+    "examples": []
+}

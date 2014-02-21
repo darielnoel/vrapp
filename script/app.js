@@ -5,6 +5,8 @@ YUI().use(
 	'event',
 	'event-move',
 	'event-touch',
+	'event-tap',
+	'event-flick',
 	'scrollview',
 	'vrapp-controller-view',
 	'vrapp-controller-app',
@@ -12,18 +14,16 @@ YUI().use(
 	'vrapp-view-landing',
 	'vrapp-view-main',
 	'vrapp-view-dualslider',
+	'vrapp-view-selector',
 	'vrapp-view-container',
 	'vrapp-util-router',
 function(Y){
 	console.log('Hello world');
 
 	//Y.log(Y.Env._loader.data);
-	Y.one('#help').on('click',function(e){
-		console.log('joder');
+	Y.one('#help').on('gesturemovestart',function(e){
 		Android.showHelp();
-	})
-
-
+	});
 
 	function showAndroidToast(message) {
 	   var result = Android.showToast(message);
@@ -100,10 +100,10 @@ function(Y){
 	});
 
 //---Seleccionador de Rangos----------------------------------------------------------------------
-	Y.on('vrapp-view-dualslider:selectHandle',function(e){
-		console.log('Se escucha el evento en el main');
-		console.log(e.data);
-	});
+	// Y.on('vrapp-view-dualslider:selectHandle',function(e){
+	// 	console.log('Se escucha el evento en el main');
+	// 	console.log(e.data);
+	// });
 
 	var rangeSlider = new Y.VrApp.DualSlider({
 		track: {
@@ -130,6 +130,18 @@ function(Y){
 	rangeSlider.syncThumbByValue('minThumb',10);
 	rangeSlider.syncThumbByValue('maxThumb',21);
 
+//Seleccionador de rangos widget
+	var minRangeSelector = new Y.VrApp.Selector({
+		srcNode: Y.one('#minThumbModal'),
+		itemModelCollection: APP_CONFIG.keyCollection,
+		minRange: 0,
+		maxRange: 18,
+		selectedItemIndex: 10,
+		type: 'min'
+	}).render();
+	//var maxRangeSelector = Y.VrApp.Selector();
+
+
 //--------------------------------------------------------------
 	var artistModelCollection = APP_CONFIG.tests.artistModelCollection,
 		artistContainer;
@@ -141,6 +153,19 @@ function(Y){
 
 	//Se le pasa un colleccion de modelos de artistas
 	//artistContainer.syncData([]);
+
+//---------------------------------------------------------------
+//Fast click
+	// var helpButtonDOMNode = Y.one('#help').getDOMNode();
+	// FastClick.attach(helpButtonDOMNode);
+
+
+	// helpButtonDOMNode.addEventListener('click', function(event) {
+	// 	cTime = Date.now();
+	// 	$('#myModal').modal({});
+	// 	//document.getElementById('c-time').value = cTime;
+	// 	helpButtonDOMNode.style.backgroundColor = helpButtonDOMNode.style.backgroundColor ? '' : 'YellowGreen';
+	// }, false);
 
 
 });
