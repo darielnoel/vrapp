@@ -133,6 +133,10 @@ function(Y){
 	Y.VrApp.App.View.rangeSlider = rangeSlider;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+//Seleccionador de rangos widget
+>>>>>>> df8ef3374d4140d56d2e8ffe40c558f45eb4de7f
 =======
 //Seleccionador de rangos widget
 >>>>>>> df8ef3374d4140d56d2e8ffe40c558f45eb4de7f
@@ -165,7 +169,10 @@ function(Y){
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> df8ef3374d4140d56d2e8ffe40c558f45eb4de7f
 =======
 >>>>>>> df8ef3374d4140d56d2e8ffe40c558f45eb4de7f
 //--------------------------------------------------------------

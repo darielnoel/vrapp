@@ -37,6 +37,7 @@ var ATTR_CONTENTBOX = 'contentBox',
 			Y.VrApp.App.View.artistContainer.syncData([ ]);
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		openSelectorRangeAction: function(params){
 			console.log('openSelectorRangeAction');
@@ -49,6 +50,8 @@ var ATTR_CONTENTBOX = 'contentBox',
 				$('#maxThumbModal').modal({});
 			}
 		},
+=======
+>>>>>>> df8ef3374d4140d56d2e8ffe40c558f45eb4de7f
 =======
 >>>>>>> df8ef3374d4140d56d2e8ffe40c558f45eb4de7f
 
