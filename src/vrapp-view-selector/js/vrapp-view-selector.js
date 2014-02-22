@@ -143,6 +143,10 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 						}
 					});
 			}
+<<<<<<< HEAD
+=======
+
+>>>>>>> df8ef3374d4140d56d2e8ffe40c558f45eb4de7f
 		}
 
 
