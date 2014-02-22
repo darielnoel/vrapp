@@ -132,14 +132,7 @@ function(Y){
 
 	Y.VrApp.App.View.rangeSlider = rangeSlider;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 //Seleccionador de rangos widget
->>>>>>> df8ef3374d4140d56d2e8ffe40c558f45eb4de7f
-=======
-//Seleccionador de rangos widget
->>>>>>> df8ef3374d4140d56d2e8ffe40c558f45eb4de7f
 	var minRangeSelector = new Y.VrApp.Selector({
 		srcNode: Y.one('#minThumbModal'),
 		itemModelCollection: APP_CONFIG.keyCollection,
@@ -168,13 +161,6 @@ function(Y){
 	Y.VrApp.App.View.maxRangeSelector = maxRangeSelector;
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> df8ef3374d4140d56d2e8ffe40c558f45eb4de7f
-=======
->>>>>>> df8ef3374d4140d56d2e8ffe40c558f45eb4de7f
 //--------------------------------------------------------------
 	var artistModelCollection = APP_CONFIG.tests.artistModelCollection,
 		artistContainer;

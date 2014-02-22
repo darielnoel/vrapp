@@ -36,24 +36,6 @@ var ATTR_CONTENTBOX = 'contentBox',
 			//Y.VrApp.App.View.rangeSlider.getMinRange(), Y.VrApp.App.View.rangeSlider.getMaxRange()
 			Y.VrApp.App.View.artistContainer.syncData([ ]);
 		},
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-		openSelectorRangeAction: function(params){
-			console.log('openSelectorRangeAction');
-			console.log(params);
-			if(params.data.type === 'minThumb'){
-				//Abrir el selector de rango min
-				$('#minThumbModal').modal({});
-			}else {
-				//Abrir el selector de rango max
-				$('#maxThumbModal').modal({});
-			}
-		},
-=======
->>>>>>> df8ef3374d4140d56d2e8ffe40c558f45eb4de7f
-=======
->>>>>>> df8ef3374d4140d56d2e8ffe40c558f45eb4de7f
 
 		openSelectorRangeAction: function(params){
 			console.log('openSelectorRangeAction');

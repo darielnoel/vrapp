@@ -188,9 +188,6 @@ var MyDualSlider = Y.Base.create('vrapp-view-dualslider', Y.Base, [], {
 		 */
 		gesturemovestartHandle: function(e, extra){
 			var instance = this;
-			console.log('gesturemovestartHandle');
-			console.log(e);
-			console.log(extra);
 			instance.fire('selectHandle', {
 				data: {
 					event: e,
