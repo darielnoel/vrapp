@@ -100,10 +100,6 @@ function(Y){
 	});
 
 //---Seleccionador de Rangos----------------------------------------------------------------------
-	// Y.on('vrapp-view-dualslider:selectHandle',function(e){
-	// 	console.log('Se escucha el evento en el main');
-	// 	console.log(e.data);
-	// });
 
 	var rangeSlider = new Y.VrApp.DualSlider({
 		track: {
