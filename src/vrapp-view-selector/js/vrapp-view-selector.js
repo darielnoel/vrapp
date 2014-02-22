@@ -25,7 +25,7 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 		 */
 		_publishEvents: function () {
 			var instance = this;
-			instance.publish('selectHandle', {
+			instance.publish('syncRangeSelection', {
 				emitFacade: true,
 				broadcast: 1
 			});
@@ -72,23 +72,13 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 		 * @return 
 		 */
 		bindUI: function () {
-			// var instance = this,
-			// 	minThumb = instance.get('minThumb'),
-			// 	maxThumb = instance.get('maxThumb'),
+			var instance = this,
+				boundingBox = instance.get(ATTR_BOUNDINGBOX),
+				selectorBodyNode = boundingBox.one('.selector-body');
 			// 	selectorHandleNode,
 			// 	keyCollection = instance.get('keyCollection');
 
-
-			// //TODO: Debe ser optimizado hay codigo repetido aqui
-			// selectorHandleNode = minThumb.node.one('.key-selector-arm');
-			// selectorHandleNode.setAttribute('data-key', keyCollection[minThumb.value].pitchName);
-			// selectorHandleNode.on('gesturemovestart', instance.gesturemovestartHandle,{},instance,'minThumb');
-
-			// selectorHandleNode = maxThumb.node.one('.key-selector-arm');
-			// selectorHandleNode.setAttribute('data-key', keyCollection[maxThumb.value].pitchName);
-			// selectorHandleNode.on('gesturemovestart', instance.gesturemovestartHandle,{},instance, 'maxThumb');
-
-
+			selectorBodyNode.delegate('click', instance.gesturemovestartHandle,'li', instance, {});
 		},
 
 		/**
@@ -105,18 +95,54 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 		 * @param {} e
 		 * @return 
 		 */
-		gesturemovestartHandle: function(e, extra){
-			var instance = this;
-			console.log('gesturemovestartHandle');
-			console.log(e);
-			console.log(extra);
-			instance.fire('selectHandle', {
-				data: {
-					event: e,
-					key: e.currentTarget.getAttribute('data-key') ,
-					type: extra
-				}
-			});
+		gesturemovestartHandle: function(e){
+			var instance = this,
+				keyIndex = parseInt(e.target.getAttribute('data-key')),
+				boundingBox = instance.get(ATTR_BOUNDINGBOX),
+				selectorBodyNode = boundingBox.one('.selector-body');
+
+			if (!e.target.hasClass('disabled')) {
+				selectorBodyNode.one('.selected').removeClass('selected');
+				instance.set('selectedItemIndex', keyIndex);
+				e.target.addClass('selected');
+
+				instance.fire('syncRangeSelection', {
+					data: {
+						keyIndex: keyIndex,
+						type: instance.get('type')
+					}
+				});
+			};
+
+		},
+
+		syncSelectableRange: function(keyIndex){
+			var instance = this,
+				type = instance.get('type'),
+				boundingBox = instance.get(ATTR_BOUNDINGBOX),
+				selectorBodyNode = boundingBox.one('.selector-body'),
+				liNodeItemCollection = selectorBodyNode.all('li');
+
+			if(type  === 'minThumb'){
+				liNodeItemCollection.each(function(value,key){
+					console.log(key);
+					if(key < keyIndex){
+						value.removeClass('disabled');
+					} else {
+						value.addClass('disabled');
+					}
+				});
+			} else {
+					var minRange = instance.get('minRange');
+					liNodeItemCollection.each(function(value,key){
+						console.log(key);
+						if(key + minRange > keyIndex){
+							value.removeClass('disabled');
+						} else {
+							value.addClass('disabled');
+						}
+					});
+			}
 		}
 
 
@@ -136,7 +162,7 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 				value:13
 			},
 			type: {
-				value: 'min'
+				value: 'minThumb'
 			}
 		}
 

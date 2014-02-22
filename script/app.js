@@ -130,16 +130,35 @@ function(Y){
 	rangeSlider.syncThumbByValue('minThumb',10);
 	rangeSlider.syncThumbByValue('maxThumb',21);
 
-//Seleccionador de rangos widget
+	Y.VrApp.App.View.rangeSlider = rangeSlider;
+
 	var minRangeSelector = new Y.VrApp.Selector({
 		srcNode: Y.one('#minThumbModal'),
 		itemModelCollection: APP_CONFIG.keyCollection,
 		minRange: 0,
 		maxRange: 18,
 		selectedItemIndex: 10,
-		type: 'min'
-	}).render();
-	//var maxRangeSelector = Y.VrApp.Selector();
+		type: 'minThumb'
+	});
+
+	minRangeSelector.addTarget(App.Util.Router);
+	minRangeSelector.render();
+	Y.VrApp.App.View.minRangeSelector = minRangeSelector;
+
+
+	var maxRangeSelector = new Y.VrApp.Selector({
+		srcNode: Y.one('#maxThumbModal'),
+		itemModelCollection: APP_CONFIG.keyCollection,
+		minRange: 14,
+		maxRange: 41,
+		selectedItemIndex: 21,
+		type: 'maxThumb'
+	});
+
+	maxRangeSelector.addTarget(App.Util.Router);
+	maxRangeSelector.render();
+	Y.VrApp.App.View.maxRangeSelector = maxRangeSelector;
+
 
 
 //--------------------------------------------------------------
@@ -150,6 +169,8 @@ function(Y){
 		childModelCollection: artistModelCollection,
 		srcNode: Y.one('.artist-scrollview-container')
 	}).render();
+
+	Y.VrApp.App.View.artistContainer = artistContainer;
 
 	//Se le pasa un colleccion de modelos de artistas
 	//artistContainer.syncData([]);
