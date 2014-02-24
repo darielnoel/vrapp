@@ -72,18 +72,6 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 				instance.setActiveView(nextViewIndex);
 				instance.activeView().showUI();
 
-				var artistModelCollection = APP_CONFIG.tests.artistModelCollection,
-					artistContainer;
-
-				artistContainer = new Y.VrApp.Container({
-					childModelCollection: artistModelCollection,
-					srcNode: Y.one('.artist-scrollview-container')
-				});
-
-				Y.VrApp.App.View.artistContainer = artistContainer;
-				Y.VrApp.App.View.artistContainer.render();
-
-
 				});
 
 

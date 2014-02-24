@@ -1,3 +1,5 @@
+
+/*Barra superior*/
 .topbar {
   background-color: #f5f5f5;
   border-color: #f5f5f5;
@@ -5,11 +7,13 @@
   padding: 9px 15px 9px 15px;
 }
 
-.header{
+/*Boton de ir atras*/
+.header-back{
 	color:#999999;
 	font-size: 100%;
 }
 
+/*Se sobrescriben los valores de bootstrap por defecto*/
 .btn {
   border-radius: 0px;
 }
@@ -22,53 +26,6 @@
 .btn-info:hover{
   background-color: #2980B9;
   border-color: #2980B9;  
-}
-
-.popover{
-    position: relative;
-    display: block;
-    float: left;
-    width: 235px;
-    margin-top: 20px;
-    border-radius: 0px;
-    background-color: #edeff1;
-    border-color: #edeff1;
-	webkit-box-shadow: 0 0px 0px rgba(0,0,0,0);
-	box-shadow: 0 0px 0px rgba(0,0,0,0);
-	color:#555555;
-}
-
-.popover.right .arrow {
-	top: 14%;
-	border-right-color: #edeff1;
-}
-
-.popover.right .arrow:after {
-	border-right-color: #edeff1;
-}
-.people{
-	margin-top: 20px;
-	margin-right: 10px;
-}
-
-.popover p {
-	margin-bottom: 0px;
-}
-
-.hero-slogan{
-	color:#555555;
-	margin-top: 30px;
-}
-
-.arrow-image{
-	margin-left: 75px;
-}
-
-.container {
-	max-width: 386px;
-	padding-right: 10px;
-	padding-left: 10px;
-
 }
 
 .btn-primary{
@@ -91,20 +48,13 @@
 	outline-offset: -2px;
 }
 
-.center-align{
-	margin: 0px auto;
-}
+/*End Botones*/
 
+/*Vistas*/
 .view{
 	position: relative;
 	display: block;
 }
-
-/*.yui3-vrapp-view-landing{
-	position: relative;
-	display: block;
-	left:0%;
-}*/
 
 .view-active{
 	position: relative;
@@ -123,7 +73,9 @@
 	overflow: hidden;
 }
 
-/*-------------------------------------Vista principal----------------------*/
+/*End Vistas*/
+
+/*Separadores*/
 .separator-content-space-small{
 	margin-top: 30px;
 }
@@ -140,41 +92,23 @@
 	margin-top: 20px;
 }
 
-.ball{
-	padding-top: 5px;
-	margin-right: 8px;
-} 
+/*End Separadores*/
 
-.primary-color{
 
-}
-
-.base-color{
-	background-color: red;
-}
-
-.secondary-color{
-	background-color: #3498db;
-}
-
-.secondary-text-color{
-	color: #3498db;
-}
-
+/*Texto normal de las descripciones*/
 .normal-text{
 	font-size: 125%;
 	color: #555555;
 }
 
+/*Texto subrayado en azul*/
 .market-secondary{
 	background-color:#3498db;
 	color: white;
 	padding: 0.3% 1%; 
 }
 
-.s-padding-left{
-	padding-left: 0.6em;
-}
+
 
 @media (max-width:350px) {
 	.hidden-small{
@@ -183,37 +117,7 @@
 	}
 }
 
-.artist-scrollview .popover{
-	width: 100%;
-	max-width: 100%;
-}
 
-
-
-.hscrollbar
-{
-	overflow-x: auto; /*for horizontal scroll bar */
-	overflow-y: hidden; /*for hiding vertical scroll bar */
-}
-
-.content-scroller
-{
-	width: 100%; 
-    height: 200px;
-    overflow: auto; 
-}
-
-.inner-scroller
-{
-	float:left;
-    margin-right:-30000px;
-    padding-left:20px;
-
-}
-
-.no-padding{
-	padding: 0;
-}
 
 .arrow-along{
 
@@ -233,54 +137,8 @@
 	margin: 0 auto;
 }
 
-p.no-margin{
-	margin: 0 0 0px;
-}
 
-
-
-
-
-
-
-
-
-
-
-
-/*---------------------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------*/
-.thumb{
-	width: 50px;
-	height: 50px;
-	/*padding: 10px;*/
-	border: 1px solid orange;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	background: lightyellow;
-	border-radius: 20px;
-	position: relative;
-}
-
-#box2{
-	width: 50px;
-	height: 50px;
-	font-size: 2em;
-	border: 1px solid orange;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	background: lightyellow;
-	position: absolute;
-	padding-top: 4px;
-	-moz-box-shadow: 0 0 5px gray;
-	box-shadow: 0 0 5px gray;
-	text-align: center;
-}
-
+/*Para las descripciones*/
 ul {
     list-style: none;
     padding:0;
@@ -299,12 +157,24 @@ li:before {
     vertical-align:middle;
     line-height:20px;
 }
+/*End Para las descripciones*/
 
-.loader {
-	font-size: 80%;
-	color: #777;
-	width: 32px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 60px;
+
+
+
+/*Utiles*/
+.center-align{
+	margin: 0px auto;
+}
+
+p.no-margin{
+	margin: 0 0 0px;
+}
+
+.no-padding{
+	padding: 0;
+}
+
+.s-padding-left{
+	padding-left: 0.6em;
 }

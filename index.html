@@ -6,18 +6,20 @@
 		<title>VR App</title>
 		<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
 		<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="assets/styles/landingview.css" rel="stylesheet" type="text/css" />
+		<link href="assets/styles/help.css" rel="stylesheet" type="text/css" />
 		<link href="assets/styles/main.css" rel="stylesheet" type="text/css" />
 		<link href="assets/styles/piano.css" rel="stylesheet" type="text/css" />
 		<link href="assets/styles/dualslider.css" rel="stylesheet" type="text/css" />
 		<link href="assets/styles/scrollview.css" rel="stylesheet" type="text/css" />
 		<link href="assets/styles/selector.css" rel="stylesheet" type="text/css" />
 		<link href="assets/styles/share.css" rel="stylesheet" type="text/css" />
-		<link href="assets/styles/help.css" rel="stylesheet" type="text/css" />
+		
 	</head>
 	<body leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
 		<!-- Barra superior -->
 		<div class="row45 topbar">
-			<div class="col-xs-2 header">
+			<div class="col-xs-2 header-back">
 				<img src="assets/images/icon.png">
 			</div>
 			<div class="col-xs-8"></div>
@@ -31,10 +33,122 @@
 
 		<!-- Contenedor de vistas -->
 		<div class="view-container">
+			<!-- Vista Inicial -->
+ 			<div id="landing-view" class="view">
+				<div class="container">
+					<div class="center-block">
+						<div class="row">
+							<div class="col-md-1 col-sm-1 col-xs-0"></div>
+							<div class="col-xs-12 col-md-10 col-sm-10">
+								<div class="landing-view-item-container center-block">
+									<img src="assets/images/people2.png" class="pull-left people" alt="Responsive image">
+									<div class="popover right pull-left">
+								        <div class="arrow"></div>
+								        <div class="popover-content">
+								        	<p>
+								        		I can sing like @adele
+								        	</p>
+								        	<img src="assets/images/adele.png" class="pull-right singers">
+								        </div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-1 col-sm-1 col-xs-0"></div>
+						</div>
+						<div class="row">
+							<div class="col-md-0 col-sm-1 col-xs-0"></div>
+							<div class="col-xs-12 col-md-10 col-sm-10">
+								<div class="landing-view-item-container center-block">
+									<img src="assets/images/people3.png" class="pull-left people" alt="Responsive image">
+									<div class="popover right pull-left">
+								        <div class="arrow"></div>
+								        <div class="popover-content">
+								        	<p>
+								        		@friends Wow i can believe I can sing
+												like @BrunoMars It is amazing.
+												
+								        	</p>
+								        	<img src="assets/images/bruno.png" class="pull-right singers">
+								        </div>
+									</div>
+								</div>					
+							</div>
+							<div class="col-md-1 col-sm-1 col-xs-0"></div>
+						</div>
+						<div class="row">
+							<div class="col-md-1 col-sm-1 col-xs-0"></div>
+							<div class="col-xs-12 col-md-10 col-sm-10">
+								<div class="landing-view-item-container center-block">
+									<img src="assets/images/people2.png" class="pull-left people" alt="Responsive image">
+									<div class="popover right pull-left">
+								        <div class="arrow"></div>
+								        <div class="popover-content">
+								        	<p>
+								        		I can sing like @adele
+								        	</p>
+								        	<img src="assets/images/adele.png" class="pull-right singers">
+								        </div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="col-md-1 col-sm-1 col-xs-0"></div>
+						</div>
+						<div class="row">
+							<div class="col-xs-0 col-sm-1"></div>
+							<div class="col-xs-12 col-md-10 col-sm-10">
+								<h4 class="text-center hero-slogan">Are you the next music start?</h4>						
+							</div>
+							<div class="col-xs-0 col-md-1 col-sm-1"></div>
+						</div>
+						<div class="row">
+							<div class="col-xs-2"></div>
+							<div class="col-xs-8 col-md-8 col-sm-8">
+								<img src="assets/images/arrow.png" class="pull-right singers arrow-image">					
+							</div>
+							<div class="col-xs-2"></div>
+						</div>
+						<div class="row">
+							<div class="col-xs-3 col-md-3 col-sm-3"></div>
+							<div class="col-xs-6 col-md-6 col-sm-6">
+								<button type="button" id="find-out" class="btn btn-block btn-lg btn-primary">
+									Find Out!
+								</button>						
+							</div>
+							<div class="col-xs-3 col-md-3 col-sm-3"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Inicial -->
+
 
 			<!-- Vista principal -->
 			<div id="main-view" class="view view-hidden">
-				<div class="container">
+						<!--Help-->
+				<div class="help-container">
+						<div class="help-video">
+							<div class="help-video-container">
+								<img src="assets/images/help_video_arrow.png"/>
+								<p>Find your vocal range</p>
+							</div>
+						</div>			
+						<div class="container">
+							<div class="row help-selection">
+								<div class="help-selection-container">
+									<div class="row">
+										<p> Tap to select your vocal range</p>
+									</div>
+									<div class="row">
+										<img src="assets/images/selection_arrow.png"/>
+									</div>
+								</div>
+							</div>
+						</div>
+				</div>
+						<!--End Help-->
+				<div class="container main-view-container" style="opacity:0;">
 					<div class="row separator-content-space-xs">
 							<div class="col-xs-11 col-md-11 col-sm-11">
 								<ul class="la">
@@ -326,125 +440,11 @@
 					    </div>
 					  </div>
 					</div>
-
-					<!--Help-->
-					<div class="help-container">
-						<div class="help-video">
-							<div class="help-video-container">
-								<img src="assets/images/help_video_arrow.png"/>
-								<p>Find your vocal range</p>
-							</div>
-						</div>			
-						<div class="container">
-							<div class="row help-selection">
-								<div class="help-selection-container">
-									<div class="row">
-										<p> Tap to select your vocal range</p>
-									</div>
-									<div class="row">
-										<img src="assets/images/selection_arrow.png"/>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--End Help-->
 				</div>
 				<!--End Container-->
 			</div>
 			<!-- End Vista principal -->
 
-			<!-- Vista Inicial -->
- 			<div id="landing-view" class="view">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-1 col-sm-1 col-xs-1"></div>
-						<div class="col-xs-10 col-md-10 col-sm-10">
-							<img src="assets/images/people3.png" class="pull-left people" alt="Responsive image">
-							<div class="popover right pull-left">
-						        <div class="arrow"></div>
-						        <div class="popover-content">
-						        	<p>
-						        		@friends Wow i can believe I can sing
-										like @BrunoMars It is amazing.
-										
-						        	</p>
-						        	<img src="assets/images/bruno.png" class="pull-right singers">
-						        </div>
-							</div>						
-						</div>
-						<div class="col-md-1 col-sm-1 col-xs-1"></div>
-					</div>
-					<div class="row">
-						<div class="col-md-1 col-sm-1 col-xs-1"></div>
-						<div class="col-xs-10 col-md-10 col-sm-10">
-								<img src="assets/images/people2.png" class="pull-left people" alt="Responsive image">
-								<div class="popover right pull-left">
-							        <div class="arrow"></div>
-							        <div class="popover-content">
-							        	<p>
-							        		I can sing like @adele
-							        	</p>
-							        	<img src="assets/images/adele.png" class="pull-right singers">
-							        </div>
-								</div>
-						</div>
-						<div class="col-md-1 col-sm-1 col-xs-1"></div>
-					</div>
-					<div class="row">
-						<div class="col-xs-1 col-sm-1"></div>
-						<div class="col-xs-10 col-md-10 col-sm-10">
-							<h4 class="text-center hero-slogan">Are you the next music start?</h4>						
-						</div>
-						<div class="col-xs-1 col-md-1 col-sm-1"></div>
-					</div>
-					<div class="row">
-						<div class="col-xs-2"></div>
-						<div class="col-xs-8 col-md-8 col-sm-8">
-							<img src="assets/images/arrow.png" class="pull-right singers arrow-image">					
-						</div>
-						<div class="col-xs-2"></div>
-					</div>
-					<div class="row">
-						<div class="col-xs-3 col-md-3 col-sm-3"></div>
-						<div class="col-xs-6 col-md-6 col-sm-6">
-							<button type="button" id="find-out" class="btn btn-block btn-lg btn-primary">
-								Find Out!
-							</button>						
-						</div>
-						<div class="col-xs-3 col-md-3 col-sm-3"></div>
-					</div>
-				</div>
-			</div>
-			<!-- End Inicial -->
-
-			<!--<div id="main-view" class="view view-hidden">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-1 col-sm-1"></div>
-						<div class="col-xs-10 col-md-10 col-sm-10">
-							<h4 class="text-center hero-slogan">Ready</h4>						
-						</div>
-						<div class="col-xs-1 col-md-1 col-sm-1"></div>
-					</div>
-					<div class="row">
-						<div class="col-xs-2"></div>
-						<div class="col-xs-8 col-md-8 col-sm-8">
-							<img src="assets/images/arrow.png" class="pull-right singers arrow-image">					
-						</div>
-						<div class="col-xs-2"></div>
-					</div>
-					<div class="row">
-						<div class="col-xs-3 col-md-3 col-sm-3"></div>
-						<div class="col-xs-6 col-md-6 col-sm-6">
-							<button type="button" id="finish" class="btn btn-block btn-lg btn-primary">
-								Find Out!
-							</button>						
-						</div>
-						<div class="col-xs-3 col-md-3 col-sm-3"></div>
-					</div>
-				</div>
-			</div> -->
 		</div>
 
 	    <script src="lib/jquery/jquery.js"></script>

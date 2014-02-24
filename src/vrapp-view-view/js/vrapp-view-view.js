@@ -75,7 +75,7 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 			contentBox.replaceClass('view-hidden', 'view-active');
 			boundingBox.transition({
 			    easing: 'ease-out',
-			    duration: 0.3, // seconds
+			    duration: 0.2, // seconds
 			    left: 0
 			}, function() {
 			    //boundingBox.setStyle('display', 'block');
@@ -107,7 +107,7 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 
 			boundingBox.transition({
 			    easing: 'ease-out',
-			    duration: 0.3, // seconds
+			    duration: 0.2, // seconds
 			    left: leftPosition
 			}, function() {
 				boundingBox.replaceClass('view-active', 'view-hidden');
@@ -121,6 +121,9 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 
 	}, {
 		ATTRS: {
+			isChildsRender: {
+				value:0
+			}
 		}
 
 	});

@@ -1,0 +1,66 @@
+#landing-view .container{
+/*	background: red;*/
+}
+
+.popover{
+    position: relative;
+    display: block;
+    float: left;
+    width: 235px;
+    margin-top: 20px;
+    border-radius: 0px;
+    background-color: #edeff1;
+    border-color: #edeff1;
+	webkit-box-shadow: 0 0px 0px rgba(0,0,0,0);
+	box-shadow: 0 0px 0px rgba(0,0,0,0);
+	color:#555555;
+}
+
+.popover.right .arrow {
+	top: 18px;
+	border-right-color: #edeff1;
+}
+
+.popover.right .arrow:after {
+	border-right-color: #edeff1;
+}
+.people{
+	margin-top: 20px;
+	margin-right: 10px;
+}
+
+.popover p {
+	margin-bottom: 0px;
+}
+
+.hero-slogan{
+	color:#888888;
+	margin-top: 60px;
+	font-size: 150%;
+/*	margin-left: 34px;*/
+}
+
+.arrow-image{
+/*	margin-left: 75px;*/
+	margin-bottom: 20px;
+}
+
+
+.popover-content img{
+	margin-bottom: 7px;
+}
+
+
+.container {
+	max-width: 386px;
+	padding-right: 10px;
+	padding-left: 10px;
+
+}
+
+@media (max-width:700px) {
+	.landing-view-item-container{
+		width: 290px;
+		margin: 0 auto;
+	}
+}

@@ -67,14 +67,14 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 			var instance = this,
 				boundingBox = instance.get(ATTR_BOUNDINGBOX);
 
-			boundingBox.one('img').on('click', function (e) {
-				console.log('click en un link');
-				if(instance.get('behavior') === 'blocked'){
-					console.log('es un item blocked');
-					instance.fire('vrapp-view-item:unlockApp', {});
-				}
-				e.preventDefault();
-			});
+			// boundingBox.one('img').on('click', function (e) {
+			// 	console.log('click en un link');
+			// 	if(instance.get('behavior') === 'blocked'){
+			// 		console.log('es un item blocked');
+			// 		instance.fire('vrapp-view-item:unlockApp', {});
+			// 	}
+			// 	e.preventDefault();
+			// });
 
 			boundingBox.on('tap', function (e) {
 				console.log('touchstart en un link');

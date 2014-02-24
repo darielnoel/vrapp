@@ -85,7 +85,6 @@ function(Y){
 
 	},
 
-	 
 	App.initializeControllers();
 	App.initializeUtils();
 	App.initializeViews();
@@ -94,101 +93,19 @@ function(Y){
 
 	//Se escucha el evento de proxima vista de la landing page
 	Y.on('vrapp-view-landing:nextview', function(){
-		App.Controller.controllerView.changeToNextView();
+		//App.Controller.controllerView.changeToNextView();
+		App.Controller.AppController.showMainViewAction();
+
 	});
 
 	//Se escucha el evento de ir atras de la barra
-	Y.one('.header').on('tap', function(e){
+	Y.one('.header-back').on('click', function(e){
+		console.log('El tap se escucha');
 		App.Controller.controllerView.changeToPreviousView();
 	});
 
 
-
-	//Help View
-	var helpView = new Y.VrApp.HelpView({
-		srcNode: Y.one('.help-container')
-	}).render();
-
-	helpView.addTarget(App.Util.Router);
-	Y.VrApp.App.View.helpView = helpView;
-
-//---Seleccionador de Rangos----------------------------------------------------------------------
-
-	var rangeSlider = new Y.VrApp.DualSlider({
-		track: {
-			node: Y.one('.track')
-		},
-		minThumb:{
-			value:10,
-			node: Y.one('.track .key-selector-min'),
-			type:'minThumb',
-		},
-		maxThumb:{
-			value:21,
-			node: Y.one('.track .key-selector-max'),
-			type:'maxThumb',
-		},
-		keyCollection: APP_CONFIG.keyCollection,
-		blackBehaviorRenderCollection: APP_CONFIG.blackBehaviorRenderCollection
-	});
-
-	rangeSlider.addTarget(App.Util.Router);
-
-	rangeSlider.render();
-
-	rangeSlider.syncThumbByValue('minThumb',10);
-	rangeSlider.syncThumbByValue('maxThumb',21);
-
-	Y.VrApp.App.View.rangeSlider = rangeSlider;
-
-//Seleccionador de rangos widget
-	var minRangeSelector = new Y.VrApp.Selector({
-		srcNode: Y.one('#minThumbModal'),
-		itemModelCollection: APP_CONFIG.keyCollection,
-		minRange: 0,
-		maxRange: 18,
-		selectedItemIndex: 10,
-		type: 'minThumb'
-	});
-
-	minRangeSelector.addTarget(App.Util.Router);
-	minRangeSelector.render();
-	Y.VrApp.App.View.minRangeSelector = minRangeSelector;
-
-
-	var maxRangeSelector = new Y.VrApp.Selector({
-		srcNode: Y.one('#maxThumbModal'),
-		itemModelCollection: APP_CONFIG.keyCollection,
-		minRange: 14,
-		maxRange: 41,
-		selectedItemIndex: 21,
-		type: 'maxThumb'
-	});
-
-	maxRangeSelector.addTarget(App.Util.Router);
-	maxRangeSelector.render();
-	Y.VrApp.App.View.maxRangeSelector = maxRangeSelector;
-
-
-//--------------------------------------------------------------
-
-
-	//Se le pasa un colleccion de modelos de artistas
-	//artistContainer.syncData([]);
-
-//---------------------------------------------------------------
-//Share View
-var shareBar = new Y.VrApp.ShareBar({
-	srcNode: Y.one('.share')
-}).render();
-
-shareBar.addTarget(App.Util.Router);
-Y.VrApp.App.View.shareBar = shareBar;
-
-
-
-//---------------------------------------------------------------
-//Fast click
+//Fast click example
 	// var helpButtonDOMNode = Y.one('#help').getDOMNode();
 	// FastClick.attach(helpButtonDOMNode);
 
