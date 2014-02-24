@@ -1,6 +1,7 @@
 Y.namespace('VrApp');
 
 var ATTR_BOUNDINGBOX = 'boundingBox',
+	ATTR_CONTENTBOX = 'contentBox',
 
 	MyViewView = Y.Base.create('vrapp-view-view', Y.Widget, [], {
 
@@ -15,7 +16,7 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 			instance._publishEvents();
 		},
 
-		BOUNDING_TEMPLATE: '<div class="view-hidden"></div>',
+		BOUNDING_TEMPLATE: '<div></div>',
 		/**
 		 * Description
 		 * @method _publishEvents
@@ -32,7 +33,7 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 		 */
 		renderUI: function () {
 			var instance = this;
-			instance.get('contentBox').removeClass('view-hidden');
+			// instance.get('contentBox').removeClass('view-hidden');
 		
 		},
 
@@ -64,17 +65,24 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 		 */
 		showUI: function (callback)  {
 			var instance = this,
-				boundingBox = instance.get(ATTR_BOUNDINGBOX);
+				boundingBox = instance.get(ATTR_BOUNDINGBOX),
+				contentBox = instance.get(ATTR_CONTENTBOX);
 
+			console.log('le hago show');
+			console.log(boundingBox);
 			boundingBox.setStyle('display', 'block');
+			boundingBox.replaceClass('view-hidden', 'view-active');
+			contentBox.replaceClass('view-hidden', 'view-active');
 			boundingBox.transition({
 			    easing: 'ease-out',
 			    duration: 0.3, // seconds
 			    left: 0
 			}, function() {
 			    //boundingBox.setStyle('display', 'block');
+
+			    console.log('le estoy reemplazando la clase ahora');
+			    boundingBox.replaceClass('view-hidden', 'view-active');
 			    if(callback){
-			    	boundingBox.replaceClass('view-hidden', 'view-active');
 			    	callback();	
 			    }
 			    

@@ -43,10 +43,10 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 			var instance = this,
 				boundingBox = instance.get(ATTR_BOUNDINGBOX);
 
-			boundingBox.one('#finish').on('click', function (e) {
-				instance.fire('previousview', {});
-				e.stopPropagation();
-			});
+			// boundingBox.one('#finish').on('click', function (e) {
+			// 	instance.fire('previousview', {});
+			// 	e.stopPropagation();
+			// });
 		},
 
 		/**

@@ -221,6 +221,9 @@ var ATTR_CONTENTBOX = 'contentBox',
 
 			//Se actualiza el tamanno de la View para el translate
 			viewWidth = parseFloat(liNode.getComputedStyle('width').split('px')[0]);
+
+			console.log('cuando se actualiza vale');
+			console.log(liNode.getComputedStyle('width'));
 			instance.set('viewWidth', viewWidth);
 		},
 

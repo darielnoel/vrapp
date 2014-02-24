@@ -65,10 +65,25 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 			var instance = this,
 				nextViewIndex = instance.activeViewSiblingIndex('next');
 
+			console.log(nextViewIndex);
 			if(nextViewIndex) {
 				instance.activeView().hideUI(function(){
-					instance.setActiveView(nextViewIndex);
-					instance.activeView().showUI();
+
+				instance.setActiveView(nextViewIndex);
+				instance.activeView().showUI();
+
+				var artistModelCollection = APP_CONFIG.tests.artistModelCollection,
+					artistContainer;
+
+				artistContainer = new Y.VrApp.Container({
+					childModelCollection: artistModelCollection,
+					srcNode: Y.one('.artist-scrollview-container')
+				});
+
+				Y.VrApp.App.View.artistContainer = artistContainer;
+				Y.VrApp.App.View.artistContainer.render();
+
+
 				});
 
 

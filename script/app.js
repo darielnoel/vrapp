@@ -68,13 +68,13 @@ function(Y){
 	 * @return 
 	 */
 	App.initializeViews = function(){
-		// App.View.LandingView = new Y.VrApp.LandingView({
-		// 	srcNode:'#landing-view'
-		// }).render();
+		App.View.LandingView = new Y.VrApp.LandingView({
+			srcNode:'#landing-view'
+		}).render();
 
-		// App.View.MainView = new Y.VrApp.MainView({
-		// 	srcNode:'#main-view'
-		// }).render();
+		App.View.MainView = new Y.VrApp.MainView({
+			srcNode:'#main-view'
+		}).render();
 
 		//Agregando las vistas que se van creando
 		App.Controller.controllerView.addView(App.View.LandingView);
@@ -98,17 +98,19 @@ function(Y){
 	});
 
 	//Se escucha el evento de ir atras de la barra
-	Y.one('.header').on('click', function(e){
+	Y.one('.header').on('tap', function(e){
 		App.Controller.controllerView.changeToPreviousView();
 	});
 
-//Help View
-var helpView = new Y.VrApp.HelpView({
-	srcNode: Y.one('.help-container')
-}).render();
 
-helpView.addTarget(App.Util.Router);
-Y.VrApp.App.View.helpView = helpView;
+
+	//Help View
+	var helpView = new Y.VrApp.HelpView({
+		srcNode: Y.one('.help-container')
+	}).render();
+
+	helpView.addTarget(App.Util.Router);
+	Y.VrApp.App.View.helpView = helpView;
 
 //---Seleccionador de Rangos----------------------------------------------------------------------
 
@@ -169,15 +171,7 @@ Y.VrApp.App.View.helpView = helpView;
 
 
 //--------------------------------------------------------------
-	var artistModelCollection = APP_CONFIG.tests.artistModelCollection,
-		artistContainer;
 
-	artistContainer = new Y.VrApp.Container({
-		childModelCollection: artistModelCollection,
-		srcNode: Y.one('.artist-scrollview-container')
-	}).render();
-
-	Y.VrApp.App.View.artistContainer = artistContainer;
 
 	//Se le pasa un colleccion de modelos de artistas
 	//artistContainer.syncData([]);
