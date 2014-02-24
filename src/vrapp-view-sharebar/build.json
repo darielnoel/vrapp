@@ -1,0 +1,10 @@
+{
+    "name": "vrapp-view-sharebar",
+    "builds": {
+        "vrapp-view-sharebar": {
+            "jsfiles": [
+                "js/vrapp-view-sharebar.js"
+            ]
+        }
+    }
+}

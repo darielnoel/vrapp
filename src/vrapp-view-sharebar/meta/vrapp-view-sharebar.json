@@ -1,0 +1,8 @@
+{
+    "vrapp-view-sharebar": {
+        "requires": [
+            "widget"
+        ],
+        "skinnable": true
+    }
+}

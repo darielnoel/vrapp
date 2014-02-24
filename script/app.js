@@ -16,6 +16,8 @@ YUI().use(
 	'vrapp-view-dualslider',
 	'vrapp-view-selector',
 	'vrapp-view-container',
+	'vrapp-view-sharebar',
+	'vrapp-view-help',
 	'vrapp-util-router',
 function(Y){
 	console.log('Hello world');
@@ -23,6 +25,7 @@ function(Y){
 	//Y.log(Y.Env._loader.data);
 	Y.one('#help').on('gesturemovestart',function(e){
 		Android.showHelp();
+		//Android.shareTwitter();
 	});
 
 	function showAndroidToast(message) {
@@ -99,6 +102,14 @@ function(Y){
 		App.Controller.controllerView.changeToPreviousView();
 	});
 
+//Help View
+var helpView = new Y.VrApp.HelpView({
+	srcNode: Y.one('.help-container')
+}).render();
+
+helpView.addTarget(App.Util.Router);
+Y.VrApp.App.View.helpView = helpView;
+
 //---Seleccionador de Rangos----------------------------------------------------------------------
 
 	var rangeSlider = new Y.VrApp.DualSlider({
@@ -170,6 +181,17 @@ function(Y){
 
 	//Se le pasa un colleccion de modelos de artistas
 	//artistContainer.syncData([]);
+
+//---------------------------------------------------------------
+//Share View
+var shareBar = new Y.VrApp.ShareBar({
+	srcNode: Y.one('.share')
+}).render();
+
+shareBar.addTarget(App.Util.Router);
+Y.VrApp.App.View.shareBar = shareBar;
+
+
 
 //---------------------------------------------------------------
 //Fast click

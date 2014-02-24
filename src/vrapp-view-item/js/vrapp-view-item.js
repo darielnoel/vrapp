@@ -23,6 +23,10 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 		 */
 		_publishEvents: function () {
 			var instance = this;
+			instance.publish('unlockApp', {
+				emitFacade: true,
+				broadcast: 1
+			});
 		},
 
 		BOUNDING_TEMPLATE: '<div class="hidden opacity-hidden scroll-element"></div>',
@@ -42,7 +46,7 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 				html = '';
 
 			if(instance.get('behavior') === 'blocked'){
-				imageHtmlSrc = imageHtmlSrc + 'blocked.png" alt="">';
+				imageHtmlSrc = imageHtmlSrc + 'gift.png" alt="">';
 				tittleHtml = instance.hiddeCharts(tittleHtml);
 			} else {
 				imageHtmlSrc = imageHtmlSrc + instance.get('picture') + '" alt="">';
@@ -63,12 +67,21 @@ var ATTR_BOUNDINGBOX = 'boundingBox',
 			var instance = this,
 				boundingBox = instance.get(ATTR_BOUNDINGBOX);
 
-			boundingBox.on('click', function (e) {
+			boundingBox.one('img').on('click', function (e) {
+				console.log('click en un link');
+				if(instance.get('behavior') === 'blocked'){
+					console.log('es un item blocked');
+					instance.fire('vrapp-view-item:unlockApp', {});
+				}
 				e.preventDefault();
 			});
 
-			boundingBox.on('touchstart', function (e) {
-				console.log('click en un link');
+			boundingBox.on('tap', function (e) {
+				console.log('touchstart en un link');
+				if(instance.get('behavior') === 'blocked'){
+					console.log('es un item blocked');
+					instance.fire('vrapp-view-item:unlockApp', {});
+				}
 				e.preventDefault();
 			});
 		},

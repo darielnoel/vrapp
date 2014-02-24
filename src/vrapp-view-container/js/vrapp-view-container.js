@@ -196,6 +196,12 @@ var ATTR_CONTENTBOX = 'contentBox',
 
 					//Se crea un nuevo widget por elemento
 					childWidget = new Y.VrApp.Item(childModelCollection[i]).render(liNode);
+
+					//Si el behavior Agrego que el router escuche los eventos del item
+					if(childWidget.get('behavior') === 'blocked'){
+						childWidget.addTarget(Y.VrApp.App.Util.Router);
+					}
+
 					instance.get('itemCollection').push(childWidget);
 
 					//Cuando se tienen los items de la primera pantalla se muestran
@@ -225,7 +231,14 @@ var ATTR_CONTENTBOX = 'contentBox',
 				viewCollection = instance.get('viewCollection'),
 				activeViewIndex = instance.get('activeViewIndex'),
 				activeViewNode = viewCollection[activeViewIndex],
-				messageHTML = '<span class="normal-text">El Rango no coincide</span>';
+				messageHTML = '<div class="empty-results">\
+									<img src="assets/images/notresults.png" class="empty" alt="">\
+							   		<span class="normal-text">\
+										It\'s a shame, there are not results.\
+									</span>\
+								</div>';
+
+
 
 			//TODO: Disennar que cartel se va a poner
 			activeViewNode.set('innerHTML', messageHTML);
@@ -271,6 +284,14 @@ var ATTR_CONTENTBOX = 'contentBox',
 
 		//Recibe un itemCollectionModel y sincroniza la interfaz con respecto a este
 		syncData: function(data){
+			var instance = this;
+
+			//Muestro las nuevas vistas
+			instance.renderChilds(data);
+
+		},
+
+		cleanData: function(){
 			var instance = this,
 				contentBox = instance.get(ATTR_CONTENTBOX),
 				itemCollection = instance.get('itemCollection'),
@@ -311,10 +332,13 @@ var ATTR_CONTENTBOX = 'contentBox',
 
 			//Pongo en su lugar el scroll
 			scrollNode.setStyle("-webkit-transform", "translate3d(0px,0px,0px)");
+		},
 
-			//Muestro las nuevas vistas
-			instance.renderChilds(data);
-
+		showLoader: function(){
+			var instance = this,
+				contentBox = instance.get(ATTR_CONTENTBOX);
+			
+			contentBox.one('.artist-scrollview-loader').removeClass('hidden');
 		}
 
 	}, {

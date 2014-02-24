@@ -14,12 +14,25 @@ var ATTR_CONTENTBOX = 'contentBox',
 			console.log('Hello World I am controller');
 		},
 
+		closeHelpAction: function(params){
+			console.log('Se cierra la ayuda');
+			var textNode = Y.one('.select-vocalrange-text');
+			textNode.transition({
+			    easing: 'ease-out',
+			    duration: 0.3, // seconds
+			    opacity: '1',
+			}, function() {
+				textNode.setStyle('visibility', 'visible');
+			});
+			
+		},
+
 		//Cambia los artistas que coinciden con un rango vocal
 		syncRangeSelectionAction: function(params){
 			console.log('syncRangeSelectionAction');
 			var data = params.data,
 				selectorRange = Y.VrApp.App.View.minRangeSelector;
-			// {keyIndex: 1, type: "minThumb"} 
+
 			Y.VrApp.App.View.rangeSlider.syncThumbByValue(data.type, data.keyIndex);
 
 			if(data.type === 'minThumb'){
@@ -31,15 +44,18 @@ var ATTR_CONTENTBOX = 'contentBox',
 				Y.VrApp.App.View.minRangeSelector.syncSelectableRange(data.keyIndex);
 				$('#maxThumbModal').modal('hide');
 			}
-			//Se manda a buscar los nuevos datos
-			//Cuando lleguen se actualiza
-			//Y.VrApp.App.View.rangeSlider.getMinRange(), Y.VrApp.App.View.rangeSlider.getMaxRange()
-			Y.VrApp.App.View.artistContainer.syncData([ ]);
+
+			//Se limpia el container
+			Y.VrApp.App.View.artistContainer.cleanData();
+
+			//Se mandan a buscar los nuevos datos
+
+			//Se sincronizan los nuevos datos
+			Y.VrApp.App.View.artistContainer.syncData([]);
 		},
 
 		openSelectorRangeAction: function(params){
 			console.log('openSelectorRangeAction');
-			console.log(params);
 			if(params.data.type === 'minThumb'){
 				//Abrir el selector de rango min
 				$('#minThumbModal').modal({});
@@ -49,14 +65,10 @@ var ATTR_CONTENTBOX = 'contentBox',
 			}
 		},
 
-		//Abre el selector de rangos para el inferior
-		openMinRangeSelectorHelper: function(params){
-
-		},
-
-		//Abre el selector de rangos para el superior
-		openMaxRangeSelectorHelper: function(params){
-
+		unlockAppAction: function(){
+			console.log('unlockAppAction');
+			$('#inAppPayModal').modal({});
+			
 		},
 
 		//Muestra la vista inicial
@@ -79,23 +91,35 @@ var ATTR_CONTENTBOX = 'contentBox',
 
 		},
 
-		//Compartir en Twiter
-		shareTwitterAction: function(params){
+		shareAction: function(params){
+			var instance = this,
+				action = params.data.action;
 
+			if(action === 'twitter'){
+				instance.shareTwitterHelper({});
+			} else if(action === 'facebook'){
+				instance.shareFacebookHelper({});
+			} else if (action === 'google') {
+				instance.shareGoogleHelper({});
+			};
+		},
+
+		//Compartir en Twiter
+		shareTwitterHelper: function(params){
+			console.log('open twitter');
+			$('#inAppPayModal').modal({});
 		},
 
 		//Compartir en Facebook
-		shareFacebookAction: function(params){
-
+		shareFacebookHelper: function(params){
+			console.log('open facebook');
+			$('#inAppPayModal').modal({});
 		},
 
 		//Compartir en Google Plus
-		shareFacebookAction: function(params){
-
-		},
-		//Cerrar la parte de compartir
-		closeShareAction: function(params){
-
+		shareGoogleHelper: function(params){
+			console.log('open google');
+			$('#inAppPayModal').modal({});
 		}
 
 

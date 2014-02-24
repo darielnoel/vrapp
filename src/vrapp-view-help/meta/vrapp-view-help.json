@@ -1,0 +1,8 @@
+{
+    "vrapp-view-help": {
+        "requires": [
+            "widget"
+        ],
+        "skinnable": true
+    }
+}

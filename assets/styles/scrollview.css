@@ -124,4 +124,24 @@ body{
     left: -50%;
 }
 
+.artist-scrollview-scroll img.empty{
+    height: 55px;
+    margin-bottom: 4%;
+}
+
+.artist-scrollview-scroll .empty-results{
+    margin-left: -13%;
+    margin-top: 5%;
+}
+
+.artist-scrollview-scroll .empty-results span.normal-text{
+    padding: 0px 0 0%;
+    font-size: 125%;
+    color: #999999
+}
+
+
+
+
+
 

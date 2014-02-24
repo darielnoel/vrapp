@@ -11,6 +11,8 @@
 		<link href="assets/styles/dualslider.css" rel="stylesheet" type="text/css" />
 		<link href="assets/styles/scrollview.css" rel="stylesheet" type="text/css" />
 		<link href="assets/styles/selector.css" rel="stylesheet" type="text/css" />
+		<link href="assets/styles/share.css" rel="stylesheet" type="text/css" />
+		<link href="assets/styles/help.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
 		<div class="row45 topbar">
@@ -31,13 +33,13 @@
 					<div class="row separator-content-space-xs">
 							<div class="col-xs-11 col-md-11 col-sm-11">
 								<ul class="la">
-								  <li class="normal-text">
+								  <li class="normal-text select-vocalrange-text" style="visibility: hidden;opacity:0">
 								    Select your vocal range
 								  </li>
 								</ul>
 							</div>
 							<div class="col-xs-1 col-md-1 col-sm-1"></div>
-						</div>
+					</div>
 					<div class="row separator-content-space-small">
 						<div class="col-xs-1 col-md-1 col-sm-1"></div>
 						<div class="col-xs-11 col-md-11 col-sm-11">
@@ -221,11 +223,10 @@
 					</div>
 					<div class="row separator-content-space-xlarge">
 						<div class="col-xs-11 col-md-11 col-sm-11 ">
-							<p class="normal-text s-padding-left no-margin">Similar or lower <span class="market-secondary">vocal range</span><span class="hidden-small"> that me</span>:</p>
+							<p class="container-artist-description normal-text s-padding-left no-margin">Similar or lower <span class="market-secondary">vocal range</span><span class="hidden-small"> that me</span>:</p>
 						</div>
 						<div class="col-xs-1 col-md-1 col-sm-1"></div>
 					</div>
-							        
 					<div class="row separator-content-space-xsmall no-padding">
 						<div class="arrow-along"></div>
 					</div>
@@ -244,12 +245,30 @@
 										</ul>
 									</div>
 								</div>
-
 						</div>
 						<div class="col-xs-1 col-md-1 col-sm-1"></div>
-					</div>						
+					</div>
+					<div class="row no-padding">
+						<div class="col-xs-2 col-md-2 col-sm-2"></div>
+						<div class="col-xs-8 col-md-8 col-sm-8">
+								<div class="share">
+									<ul>
+										<li data-action ="twitter" class= "happy">
+											<img class= "happy" src="assets/images/twitter.png" alt="">
+										</li>
+										<li data-action ="facebook">
+											<img src="assets/images/facebook.png" alt="">
+										</li>
+										<li data-action ="google">
+											<img src="assets/images/google.png" alt="">
+										</li>
+									</ul>
+								</div>
+						</div>
+						<div class="col-xs-2 col-md-2 col-sm-2"></div>
+					</div>			
 					<!-- minThumbModal -->
-					<div class="modal fade" id="minThumbModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal fade in" id="minThumbModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					  <div class="modal-dialog">
 					    <div class="modal-content">
 					      <div class="modal-header">
@@ -266,7 +285,7 @@
 					</div>
 
 					<!-- maxThumbModal -->
-					<div class="modal fade" id="maxThumbModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal fade in" id="maxThumbModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					  <div class="modal-dialog">
 					    <div class="modal-content">
 					      <div class="modal-header">
@@ -282,9 +301,52 @@
 					  </div>
 					</div>
 
+					<!-- inAppPayModal -->
+					<div class="modal fade in" id="inAppPayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					        <h4 class="modal-title" id="myModalLabel">See another singers</h4>
+					      </div>
+					      <div class="modal-body">
+					      		<div class="selector-body">
+			  						Please we would appreciate a small contribution, just $0.99
+					      		</div>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        <button type="button" class="btn btn-primary">Pay</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
 
-
+					<!--Help-->
+					<div class="help-container">
+						<div class="help-video">
+							<div class="help-video-container">
+								<img src="assets/images/help_video_arrow.png"/>
+								<p>Find your vocal range</p>
+							</div>
+						</div>			
+						<div class="container">
+							<div class="row help-selection">
+								<div class="help-selection-container">
+									<div class="row">
+										<p> Tap to select your vocal range</p>
+									</div>
+									<div class="row">
+										<img src="assets/images/selection_arrow.png"/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--End Help-->
 					
+
+			
 			</div>
 <!-- 			<div id="landing-view" class="view view-hidden">
 				<div class="container">
@@ -379,7 +441,6 @@
 	    <script src="lib/jquery/jquery.js"></script>
 	    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	    <script src="lib/jquery/jquery.touchSwipe.min.js"></script>
-	    <script src="lib/jquery/fastclick.js"></script>
 		<script type="text/javascript" src="conf/yuiconf.js"></script>
         <script type="text/javascript" src="../../framework/yui3/3.11.0/build/yui/yui-min.js"></script>
         <script type="text/javascript" src="conf/approutes.js"></script>

@@ -82,7 +82,7 @@ var APP_CONFIG = {
 						score: 3,//De 0 a 10 indica relevancia
 						picture: 'adele.png',//"Path de la imagen asociada"
 						twitter: '@adelle',
-						behavior:'blocked'
+						behavior:'gift'
 					},
 					{
 						minVr: 20,
@@ -100,7 +100,7 @@ var APP_CONFIG = {
 						score: 3,//De 0 a 10 indica relevancia
 						picture: 'bruno.png',//"Path de la imagen asociada"
 						twitter: '@bruno',
-						behavior:'blocked4'
+						behavior:'blocked'
 					},
 					{
 						minVr: 20,

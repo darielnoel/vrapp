@@ -11,7 +11,6 @@
 .selector-body ul {
 	margin: 0;
 	padding: 0!important;
-/*	text-align: center;*/
 }
 
 .selector-body li {
@@ -64,7 +63,6 @@ content: "";
 .modal-dialog {
 	right: auto;
 	left: 50%;
-/*	width: 600px;*/
 	padding-top: 262px;
 	padding-bottom: 30px;
 }
@@ -74,8 +72,8 @@ body.modal-open{
 }
 
 .fade {
-	opacity: 0;
-	-webkit-transition: opacity .1s linear;
-	transition: opacity .1s linear;
+	opacity: 1;
+	-webkit-transition: opacity .0s linear;
+	transition: opacity .0s linear;
 }
 

@@ -1,0 +1,69 @@
+.help-topbar{
+	height: 50px;
+	padding: 9px 15px 9px 15px;
+}
+
+.help-container {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1040;
+
+	overflow-y: hidden;
+	overflow-x: hidden;
+	overflow: hidden;
+	position: absolute;
+	display: block;
+
+	background-color: white;
+	color: #b8b8b8;
+	opacity: .9;
+	font-size: 120%;
+	color: #999;
+}
+
+/*Help Selection*/
+.help-selection{
+	margin-top: 140px;
+}
+
+.help-selection-container{
+	float: right;
+}
+
+.help-selection-container p{
+	width: 57%;
+	font-size: 90%;
+	margin-left: 33%;
+	color: #999;
+}
+
+.help-selection-container img{
+	margin-top: -9%;
+}
+
+/*End Help Selection*/
+
+/*Help Video*/
+.help-video{
+	margin-top: 10px;
+}
+
+.help-video-container{
+	margin-right: 48px;
+}
+
+.help-video-container p{
+	float: right;
+	font-size: 105%;
+	margin-top: 23px;
+	margin-right: 8px;
+	color: #999;
+}
+
+.help-video-container img{
+	float: right;
+}
+
+/*End Help Selection*/
