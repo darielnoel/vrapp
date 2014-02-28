@@ -105,6 +105,19 @@ function(Y){
 	});
 
 
+	var height = Y.one('body').get('clientHeight'),
+		ratio = window.devicePixelRatio,
+		html = 'Altura: ' +  height + '- deviceP: ' + ratio;
+
+	console.log(Y.one('body'));
+
+
+
+
+
+	Y.one('.hero-slogan').set('innerHTML',html);
+
+
 //Fast click example
 	// var helpButtonDOMNode = Y.one('#help').getDOMNode();
 	// FastClick.attach(helpButtonDOMNode);

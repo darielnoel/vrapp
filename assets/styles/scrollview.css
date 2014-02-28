@@ -17,7 +17,7 @@
 
 .artist-scrollview .popover{
     overflow: hidden;
-    height: 205px;
+/*    height: 205px;*/
     margin-top: 0px;
 }
 
@@ -39,7 +39,7 @@
     display: inline-block;
     width: 100%;
     padding-right: 0px;
-    height: 155px; 
+    height: 69px; 
     -webkit-transform: translate3d(0%, 0px, 0px);     
 }
 
@@ -152,6 +152,30 @@ body{
     padding: 0px 0 0%;
     font-size: 125%;
     color: #999999
+}
+
+.artist-scrollview-scroll li {
+    text-align: center;
+    display: -moz-inline-box;
+    display: inline-block;
+    width: 100%;
+    padding-right: 0px;
+    -webkit-transform: translate3d(0%, 0px, 0px);     
+}
+
+/*Menos de 480px*/
+@media only screen and (max-height: 480px) {
+
+    .artist-scrollview-scroll{
+        height: 69px; 
+    }
+}
+
+/*Mas de 480px*/
+@media only screen and (min-height: 481px) {
+    .artist-scrollview-scroll{
+        height: 155px; 
+    }
 }
 
 

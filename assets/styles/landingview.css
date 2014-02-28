@@ -1,6 +1,62 @@
-#landing-view .container{
-/*	background: red;*/
+body{
+	height: 100%;
+	position: absolute;
+	width: 100%;
 }
+
+.view-container{
+	height: 89%;
+}
+
+.view {
+	height: 100%;
+}
+
+.yui3-vrapp-view-landing {
+	height: 100%;
+}
+
+.view > .container {
+	height: 100%;
+}
+
+
+
+
+
+
+/*Common Styles*/
+.hero-slogan{
+	color:#888888;
+	font-size: 150%;
+}
+
+/*que todos los dispositivos destinados a verse en pantalla y con un ancho de ventana
+ del navegador de 320px o menos (@media screen and (max-width:320px)) pongan el */
+
+/*Menos de 480px*/
+/*@media only screen and (max-height: 480px) {
+	#landing-view .container{
+		background: red;
+	}
+}*/
+
+/*Mas de 480px*/
+/*@media only screen and (min-height: 481px) {
+	#landing-view .container{
+		background: green;
+	}
+}*/
+
+/*Conclusion: En el browser independientemente del DPI el sigue aumentando*/
+
+/*media querie: device-width
+
+Device-width: especifica el ancho de pantalla total del dispositivo, es decir, 
+toda la pantalla, en lugar de sólo el área de representación. Esta propiedad nos 
+sirve para rastrear un dispositivo concreto. Combinándolo con otras 
+propiedades “media queries” se puede detectar cualquier aparato.*/
+
 
 .popover{
     position: relative;
@@ -31,13 +87,6 @@
 
 .popover p {
 	margin-bottom: 0px;
-}
-
-.hero-slogan{
-	color:#888888;
-	margin-top: 60px;
-	font-size: 150%;
-/*	margin-left: 34px;*/
 }
 
 .arrow-image{

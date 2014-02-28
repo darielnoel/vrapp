@@ -1,0 +1,32 @@
+/*Altura para elementos verticales*/
+.vh-1 {
+	height: 10%;	
+}
+
+.vh-2 {
+	height: 20%;	
+}
+
+.vh-3 {
+	height: 30%;	
+}
+
+.vh-4 {
+	height: 40%;	
+}
+
+.vh-5 {
+	height: 50%;	
+}
+
+.vh-5-m {
+	height: 55%;	
+}
+
+.vh-6 {
+	height: 60%;	
+}
+
+.vh-m-5{
+	margin-bottom: 30%;
+}
