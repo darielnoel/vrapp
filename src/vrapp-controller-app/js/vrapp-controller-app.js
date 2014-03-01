@@ -232,20 +232,75 @@ var ATTR_CONTENTBOX = 'contentBox',
 
 		//Compartir en Twiter
 		shareTwitterHelper: function(params){
-			console.log('open twitter');
-			$('#inAppPayModal').modal({});
+			var instance = this;
+				message = instance.getSocialMessageHelper();
+
+			if(typeof Android != "undefined") {
+				Android.shareTwitter(message);	
+			} else {
+				$('#inAppPayModal').modal({});
+			}
+			
+			
 		},
 
 		//Compartir en Facebook
 		shareFacebookHelper: function(params){
 			console.log('open facebook');
-			$('#inAppPayModal').modal({});
+			var instance = this;
+				message = instance.getSocialMessageHelper();
+
+			if(typeof Android != "undefined") {
+				Android.shareFacebook(message);	
+			} else {
+				$('#inAppPayModal').modal({});
+			}
 		},
 
 		//Compartir en Google Plus
 		shareGoogleHelper: function(params){
 			console.log('open google');
-			$('#inAppPayModal').modal({});
+			var instance = this;
+				message = instance.getSocialMessageHelper();
+
+			if(typeof Android != "undefined") {
+				Android.shareGoogle(message);	
+			} else {
+				$('#inAppPayModal').modal({});
+			}
+			
+		},
+
+		getSocialMessageHelper: function(){
+			var childModelCollection = Y.VrApp.App.View.artistContainer.get('childModelCollection'), 
+			 	message = 'Hey friends, I can sing like ',
+			 	childModelCollectionSize = childModelCollection.length,
+			 	chartsNamesCounter = 0,
+			 	namesCounter = 0,
+			 	artistName,
+			 	artistNameSize,
+			 	i = 0;
+
+			//Recorro los artistas
+			for (var i = 0; i < childModelCollectionSize; i++) {
+				if(childModelCollection[i].behavior !== 'blocked'){
+					artistName = childModelCollection[i].name;
+					artistNameSize = artistName.length;
+					
+					if(artistNameSize + chartsNamesCounter < 58){
+						message += artistName + ',';
+						chartsNamesCounter += artistNameSize;
+						namesCounter++;
+					} else {
+						break;
+					}
+				}
+			};
+
+			namesCounter = childModelCollectionSize - namesCounter;
+			message += ' and others ' + namesCounter + ' great singers. And You?? Find out in ' + APP_CONFIG.playStore.link;
+			console.log(message);
+			return message;
 		}
 
 

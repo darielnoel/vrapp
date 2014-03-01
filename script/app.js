@@ -23,9 +23,8 @@ function(Y){
 	console.log('Hello world');
 
 	//Y.log(Y.Env._loader.data);
-	Y.one('#help').on('gesturemovestart',function(e){
+	Y.one('#help').on('click',function(e){
 		Android.showHelp();
-		//Android.shareTwitter();
 	});
 
 	function showAndroidToast(message) {
@@ -33,6 +32,8 @@ function(Y){
 	   var el = document.getElementById("writer");
 	   el.innerHTML = result;
 	}
+
+
 
 	Y.namespace('VrApp');
 
@@ -111,11 +112,7 @@ function(Y){
 
 	console.log(Y.one('body'));
 
-
-
-
-
-	Y.one('.hero-slogan').set('innerHTML',html);
+	//Y.one('.hero-slogan').set('innerHTML',html);
 
 
 //Fast click example

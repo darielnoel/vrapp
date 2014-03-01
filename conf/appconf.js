@@ -1,5 +1,8 @@
 var APP_CONFIG = {
 		routes: ROUTES_CONFIG,
+		playStore: {
+			link: 'https://play.google.com/store/apps/details?id=com.gameloft.android.ANMP.GloftRAHM'
+		},
 		defaultRange:{
 			min: 20,
 			max: 30
