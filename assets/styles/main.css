@@ -80,20 +80,56 @@
 /*End Vistas*/
 
 /*Separadores*/
+.vspace-xsmall-1{
+	margin-top: 10px;
+}
+
+.vspace-xsmall-1-m{
+	margin-top: 15px;
+}
+
+.vspace-xsmall-12{
+	margin-top: 120px;
+}
+
+.vspace-xsmall-14{
+	margin-top: 140px;
+}
+
+
 .separator-content-space-small{
 	margin-top: 30px;
+}
+
+.separator-content-space-large{
+	
 }
 
 .separator-content-space-xlarge{
 	margin-top: 175px;
 }
 
-.separator-content-space-large{
-	margin-top: 80px;
+/*Menos de 480px*/
+@media only screen and (max-height: 480px) {
+
+	.separator-content-space-large{
+		margin-top: 20px;
+	}
+
+	.separator-content-space-small{
+		margin-top: 20px;
+	}
 }
 
-.separator-content-space-xs{
-	margin-top: 20px;
+/*Mas de 480px*/
+@media only screen and (min-height: 481px) {
+
+	.separator-content-space-small{
+		margin-top: 20px;
+	}
+	.separator-content-space-large{
+		margin-top: 110px;
+	}
 }
 
 /*End Separadores*/
